@@ -1,10 +1,10 @@
 import React from 'react'
 const Feld = () => {
   return (
-      <div class="text-4xl">
-        <h3>A</h3>
+      <div className='ring-2 ring-slate-500 h-[850px] w-[850px] bg-gray-800 rounded-lg'>
+
       </div>
   )
 }
 
-export default Feld
+export default Feld;
