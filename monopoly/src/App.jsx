@@ -1,5 +1,5 @@
 import React from 'react';
-import { Feld, Players, Trades, Properties, ChatLog, } from './components';
+import { Feld, Players, Trades, Properties, ChatLog, ConnectWithName } from './components';
 
 const App = () => {
   return (
@@ -9,6 +9,7 @@ const App = () => {
       </div>
       <div className=' flex justify-center bg-slate-900 absolute top-12 left-1/4'>
         <Feld/>
+        <ConnectWithName/>
       </div>
       <div class="flex justify-end pr-12 bg-slate-900 h-screen"> 
         <Players/>
