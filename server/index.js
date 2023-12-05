@@ -4,6 +4,8 @@ const http = require ("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
 
+const playerList = []
+
 app.use(cors());
 
 const server = http.createServer(app);
@@ -16,10 +18,11 @@ const io = new Server(server, {
 })
 
 io.on("connection", (socket) =>{
-    console.log(`User Connected: ${socket.id}`)
+    io.emit("updatePlayers", playerList);
 
     socket.on("send_message", (data) =>{
-        socket.broadcast.emit("receive_message", data);
+        playerList.push(data)
+        io.emit("updatePlayers", playerList);
     })
 })
 
