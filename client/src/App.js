@@ -10,6 +10,8 @@ function App() {
   //Username and button visibilty
   const [message, setMessage] = useState("");
   const [showButton, setShowButton] = useState(true);
+  const [yourTurn, setYourTurn] = useState(false);
+  const [id, setID] = useState(0);
 
   //player-list
   const [players, setPlayers] = useState([]);
@@ -28,6 +30,12 @@ function App() {
   useEffect(() => {
     socket.on("updatePlayers", (data) => {
       setPlayers(data)
+    })
+
+    socket.on('nextTurn', (id) => {
+      if(socket.id === id){
+        setYourTurn(true);
+      }
     })
   }, [socket])
 
