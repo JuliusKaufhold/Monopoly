@@ -5,15 +5,13 @@ import { useEffect, useState } from "react";
 import { Feld, Players, Trades, Properties, ChatLog} from './components/ExportFile';
 
 const socket = io.connect("http://localhost:3001");
-let nextID=3;
 
 function App() {
   //Username and button visibilty
   const [message, setMessage] = useState("");
   const [showButton, setShowButton] = useState(true);
 
-  //player-list and new username
-  const [name,setName] = useState('');
+  //player-list
   const [players, setPlayers] = useState([]);
 
   //Button and username-input disappear after use
@@ -25,9 +23,6 @@ function App() {
   const sendMessage = () => {
     socket.emit("send_message" , message);
   };
-  
-  //insert new player in player-list
-  
 
   //get connected player username, insert new player
   useEffect(() => {
@@ -54,7 +49,6 @@ function App() {
           {showButton && <input placeholder='Username...' className='absolute left-64 top-96 bg-slate-600 text-slate-200 rounded-lg ring-1 ring-black h-10 w-40' 
             onChange={(event) =>{
             setMessage(event.target.value);
-            setName(event.target.value);
           }} />}
 
           {/*Connect-Button*/}
@@ -69,12 +63,12 @@ function App() {
       {/*List with Players*/}
       <div class="flex justify-end pr-12 bg-slate-900 h-screen"> 
         <div className='bg-gradient-to-tr from-slate-700 to-slate-800 h-60 w-1/4 rounded-xl absolute top-12 ring-2 ring-slate-500'>
-          <div className='text-white text-5xl'>
-            <ul>
-              {players && players.map(player => (
-                <li key={player}>{player}</li>
-              ))}
-            </ul>
+          <div className='text-white text-2xl  flex justify-start'>
+              <ul className='text-left pl-3 pt-3 space-y-3 font-semibold font-mono content-stretch'>
+                {players && players.map(player => (
+                  <li key={player}>{player}</li>
+                ))}
+              </ul>
           </div>
         </div>
         <Trades/>
