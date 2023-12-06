@@ -10,8 +10,7 @@ function App() {
   //Username and button visibilty
   const [message, setMessage] = useState("");
   const [showButton, setShowButton] = useState(true);
-  const [yourTurn, setYourTurn] = useState(false);
-  const [id, setID] = useState(0);
+  const [yourTurn, setYourTurn] = useState(true);
 
   //player-list
   const [players, setPlayers] = useState([]);
@@ -25,6 +24,11 @@ function App() {
   const sendMessage = () => {
     socket.emit("login" , message);
   };
+
+  const endTurn = () => {
+    setYourTurn(false)
+    socket.emit("endTurn")
+  }
 
   //get connected player username, insert new player
   useEffect(() => {
@@ -63,7 +67,10 @@ function App() {
           {showButton && <button className='absolute right-64 top-96 ring-1 ring-black bg-gradient-to-tr from-slate-800 to-slate-900 rounded-xl text-white font-mono h-10 w-40 font-bold text-lg transition duration-300 ease-in-out hover:scale-105' 
           onClick={() => {sendMessage();toggleButton();}} > Connect</button>}
 
-          <h1 className='absolute bottom-72 left-96 text-white text-xl'></h1>
+          {yourTurn && <button className=' absolute bottom-48 left-1/2 ring-1 ring-black bg-gradient-to-tr from-slate-800 to-slate-900 rounded-xl text-white font-mono h-10 w-40 font-bold text-lg transition duration-300 ease-in-out hover:scale-105'
+          onClick={() => {endTurn();}}>
+
+          </button>}
         </div>
 
       </div> 

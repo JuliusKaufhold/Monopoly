@@ -34,6 +34,7 @@ io.on("connection", (socket) =>{
             currentPlayer = 0;
             return;
         }
+
         currentPlayer++;
         for(player in playerList){
             if(player.num === currentPlayer){
