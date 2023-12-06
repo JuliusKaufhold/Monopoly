@@ -21,7 +21,9 @@ io.on("connection", (socket) =>{
     io.emit("updatePlayers", playerList);
 
     socket.on("send_message", (data) =>{
-        playerList.push(data)
+        if (playerList.length<=5){
+            playerList.push({id:playerList.length ,name: data, money:1500, position:0})
+        }
         io.emit("updatePlayers", playerList);
     })
 })

@@ -46,7 +46,7 @@ function App() {
         <div className='flex justify-center'>
 
           {/*Username input*/}
-          {showButton && <input placeholder='Username...' className='absolute left-64 top-96 bg-slate-600 text-slate-200 rounded-lg ring-1 ring-black h-10 w-40' 
+          {showButton && <input onKeyDown={(e)=>{if(e.key==="Enter"){sendMessage();toggleButton();}}} placeholder='Username...' className='absolute left-64 top-96 bg-slate-600 text-slate-200 rounded-lg ring-1 ring-black h-10 w-40' 
             onChange={(event) =>{
             setMessage(event.target.value);
           }} />}
@@ -63,10 +63,15 @@ function App() {
       {/*List with Players*/}
       <div class="flex justify-end pr-12 bg-slate-900 h-screen"> 
         <div className='bg-gradient-to-tr from-slate-700 to-slate-800 h-60 w-1/4 rounded-xl absolute top-12 ring-2 ring-slate-500'>
-          <div className='text-white text-2xl  flex justify-start'>
-              <ul className='text-left pl-3 pt-3 space-y-3 font-semibold font-mono content-stretch'>
+          <div className='text-white text-lg'>
+              <ul className='px-3 py-1 space-y-3 font-semibold font-mono'>
                 {players && players.map(player => (
-                  <li key={player}>{player}</li>
+                  <li key={player.id}>
+                    <div className='flex justify-between'>
+                      <p>{player.name}</p>
+                      <p>{player.money}</p>
+                    </div>
+                  </li>
                 ))}
               </ul>
           </div>
