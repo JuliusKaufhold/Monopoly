@@ -21,7 +21,7 @@ function App() {
 
   //Username input to Server
   const sendMessage = () => {
-    socket.emit("send_message" , message);
+    socket.emit("login" , message);
   };
 
   //get connected player username, insert new player
@@ -36,12 +36,12 @@ function App() {
     <div className="App">
       
       {/*Chat and Chatlog*/}
-      <div className='flex justify-start bg-slate-900 absolute top-12 left-12 '>
+      <div className='flex justify-start bg-slate-900 absolute top-6 left-12 '>
         <ChatLog/>
       </div>
 
       {/*Game and connect*/}
-      <div className=' flex justify-center bg-slate-900 absolute top-12 left-1/4'>
+      <div className=' flex justify-center bg-slate-900 absolute top-6 left-1/4'>
         <Feld/>
         <div className='flex justify-center'>
 
@@ -62,14 +62,14 @@ function App() {
 
       {/*List with Players*/}
       <div class="flex justify-end pr-12 bg-slate-900 h-screen"> 
-        <div className='bg-gradient-to-tr from-slate-700 to-slate-800 h-60 w-1/4 rounded-xl absolute top-12 ring-2 ring-slate-500'>
+        <div className='bg-gradient-to-tr from-slate-800 to-slate-900 h-60 w-1/4 rounded-xl absolute top-12 ring-2 ring-slate-500'>
           <div className='text-white text-lg'>
               <ul className='px-3 py-1 space-y-3 font-semibold font-mono'>
                 {players && players.map(player => (
                   <li key={player.id}>
                     <div className='flex justify-between'>
-                      <p>{player.name}</p>
-                      <p>{player.money}</p>
+                      <p className='ml-20'>{player.name}</p>
+                      <p className='mr-8'>{player.money}</p>
                     </div>
                   </li>
                 ))}
