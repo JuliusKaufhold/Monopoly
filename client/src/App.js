@@ -35,7 +35,9 @@ function App() {
     socket.on("updatePlayers", (data) => {
       setPlayers(data)
     })
+  }, [socket])
 
+  useEffect(() =>{
     socket.on('nextTurn', (id) => {
       if(socket.id === id){
         setYourTurn(true);
@@ -81,7 +83,7 @@ function App() {
           <div className='text-white text-lg'>
               <ul className='px-3 py-1 space-y-3 font-semibold font-mono'>
                 {players && players.map(player => (
-                  <li key={player.id}>
+                  <li key={player.num}>
                     <div className='flex justify-between'>
                       <p className='ml-20'>{player.name}</p>
                       <p className='mr-8'>{player.money}</p>

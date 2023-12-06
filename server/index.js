@@ -22,7 +22,7 @@ const io = new Server(server, {
 io.on("connection", (socket) =>{
     io.emit("updatePlayers", playerList);
 
-    socket.on("send_message", (data) =>{
+    socket.on("login", (data) =>{
         if (playerList.length<=5){
             playerList.push({id:socket.id ,num: playerList.length,name: data, money:1500, position:0});
         }
@@ -35,13 +35,12 @@ io.on("connection", (socket) =>{
             return;
         }
 
-        currentPlayer++;
         for(player in playerList){
             if(player.num === currentPlayer){
+                currentPlayer++;
                 socket.emit('nextTurn', player.id);
             }
         }
-        
     })
 })
 
