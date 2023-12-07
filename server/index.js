@@ -10,7 +10,7 @@ app.use(cors());
 
 const server = http.createServer(app);
 
-let currentPlayer = 0;
+var currentPlayer = -1;
 
 const io = new Server(server, {
     cors: {
@@ -29,16 +29,30 @@ io.on("connection", (socket) =>{
         io.emit("updatePlayers", playerList);
     })
 
-    socket.on('endTurn', () => {
-        if(currentPlayer === playerList.length){
+    socket.on("updateGameStart",() =>{
+        currentPlayer++;
+        for(player of playerList){
+            if(player.num === currentPlayer){
+                io.emit('nextTurn', player.id);
+            }
+        }
+        io.emit("started")
+    })
+
+    socket.on("endTurn", () => {
+        if(currentPlayer === playerList.length-1){
             currentPlayer = 0;
+            for(player of playerList){
+                if(player.num === currentPlayer){
+                    io.emit('nextTurn', player.id);
+                }
+            }
             return;
         }
-
-        for(player in playerList){
+        currentPlayer++;
+        for(player of playerList){
             if(player.num === currentPlayer){
-                currentPlayer++;
-                socket.emit('nextTurn', player.id);
+                io.emit('nextTurn', player.id);
             }
         }
     })

@@ -10,7 +10,8 @@ function App() {
   //Username and button visibilty
   const [message, setMessage] = useState("");
   const [showButton, setShowButton] = useState(true);
-  const [yourTurn, setYourTurn] = useState(true);
+  const [yourTurn, setYourTurn] = useState(false);
+  const [gameStarted, setGameStarted] = useState(false)
 
   //player-list
   const [players, setPlayers] = useState([]);
@@ -30,18 +31,31 @@ function App() {
     socket.emit("endTurn")
   }
 
+  const start = () => {
+    socket.emit("updateGameStart")
+  }
+
   //get connected player username, insert new player
   useEffect(() => {
     socket.on("updatePlayers", (data) => {
+      console.log("AAA")
       setPlayers(data)
     })
   }, [socket])
 
   useEffect(() =>{
-    socket.on('nextTurn', (id) => {
-      if(socket.id === id){
+    socket.on('nextTurn', (data) => {
+      console.log("WWW")
+      if(socket.id === data){
         setYourTurn(true);
       }
+    })
+  }, [socket])
+
+  useEffect(() =>{
+    socket.on('started', () => {
+      console.log("BBB")
+      setGameStarted(true)
     })
   }, [socket])
 
@@ -50,8 +64,14 @@ function App() {
     <div className="App">
       
       {/*Chat and Chatlog*/}
-      <div className='flex justify-start bg-slate-900 absolute top-6 left-12 '>
+      <div className=' bg-slate-900 absolute top-6 left-12 '>
         <ChatLog/>
+        <div className='flex justify-center'>
+          {!gameStarted && <button className='absolute top-96 ring-1 ring-black bg-gradient-to-tr from-slate-800 to-slate-900 rounded-xl text-white font-mono h-10 w-40 font-bold text-lg transition duration-300 ease-in-out hover:scale-105'
+            onClick={() => {start();}}>
+              <h1>start game</h1>
+          </button>}
+        </div>
       </div>
 
       {/*Game and connect*/}
@@ -71,7 +91,7 @@ function App() {
 
           {yourTurn && <button className=' absolute bottom-48 left-1/2 ring-1 ring-black bg-gradient-to-tr from-slate-800 to-slate-900 rounded-xl text-white font-mono h-10 w-40 font-bold text-lg transition duration-300 ease-in-out hover:scale-105'
           onClick={() => {endTurn();}}>
-
+            <h1>End Turn</h1>
           </button>}
         </div>
 
@@ -87,6 +107,8 @@ function App() {
                     <div className='flex justify-between'>
                       <p className='ml-20'>{player.name}</p>
                       <p className='mr-8'>{player.money}</p>
+                      <p className=''>{player.id}</p>
+                      <p className=''>{player.num}</p>
                     </div>
                   </li>
                 ))}
