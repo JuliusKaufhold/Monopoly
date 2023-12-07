@@ -106,9 +106,7 @@ function App() {
                   <li key={player.num}>
                     <div className='flex justify-between'>
                       <p className='ml-20'>{player.name}</p>
-                      <p className='mr-8'>{player.money}</p>
-                      <p className=''>{player.id}</p>
-                      <p className=''>{player.num}</p>
+                      <p className='mr-8'>${player.money}</p>
                     </div>
                   </li>
                 ))}
