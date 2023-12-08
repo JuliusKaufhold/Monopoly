@@ -11,6 +11,7 @@ app.use(cors());
 const server = http.createServer(app);
 
 var currentPlayer = -1;
+let currentRoll = 0;
 
 const io = new Server(server, {
     cors: {
@@ -55,6 +56,11 @@ io.on("connection", (socket) =>{
                 io.emit('nextTurn', player.id);
             }
         }
+    })
+
+    socket.on("rolling",() => {
+        currentRoll=Math.floor(Math.random()*12);
+        io.emit("rolled",currentRoll);
     })
 })
 

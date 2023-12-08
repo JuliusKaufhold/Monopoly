@@ -12,6 +12,8 @@ function App() {
   const [showButton, setShowButton] = useState(true);
   const [yourTurn, setYourTurn] = useState(false);
   const [gameStarted, setGameStarted] = useState(false)
+  const [roll,setRoll] = useState("roll");
+  const [alreadyRolled, setAlreadyRolled] = useState(false)
 
   //player-list
   const [players, setPlayers] = useState([]);
@@ -35,29 +37,41 @@ function App() {
     socket.emit("updateGameStart")
   }
 
+  const rollingDice = () => {
+    socket.emit("rolling")
+  }
+
   //get connected player username, insert new player
   useEffect(() => {
     socket.on("updatePlayers", (data) => {
       console.log("AAA")
       setPlayers(data)
     })
-  }, [socket])
+  })
 
   useEffect(() =>{
     socket.on('nextTurn', (data) => {
       console.log("WWW")
+      setRoll("roll")
       if(socket.id === data){
         setYourTurn(true);
+        setAlreadyRolled(false);
       }
     })
-  }, [socket])
+  })
 
   useEffect(() =>{
     socket.on('started', () => {
       console.log("BBB")
       setGameStarted(true)
     })
-  }, [socket])
+  })
+
+  useEffect(() =>{
+    socket.on("rolled", (data) => {
+      setRoll(data)
+    })
+  })
 
   return (
     
@@ -77,8 +91,7 @@ function App() {
       {/*Game and connect*/}
       <div className=' flex justify-center bg-slate-900 absolute top-6 left-1/4'>
         <Feld/>
-        <div className='flex justify-center'>
-
+        
           {/*Username input*/}
           {showButton && <input onKeyDown={(e)=>{if(e.key==="Enter"){sendMessage();toggleButton();}}} placeholder='Username...' className='absolute left-64 top-96 bg-slate-600 text-slate-200 rounded-lg ring-1 ring-black h-10 w-40' 
             onChange={(event) =>{
@@ -93,7 +106,13 @@ function App() {
           onClick={() => {endTurn();}}>
             <h1>End Turn</h1>
           </button>}
-        </div>
+
+          {yourTurn && !alreadyRolled && <button className='absolute top-80 right-[345px] ring-1 ring-black bg-gradient-to-tr from-slate-800 to-slate-900 rounded-xl text-white font-mono h-10 w-40 font-bold text-lg transition duration-300 ease-in-out hover:scale-105'
+          onClick={() =>{setAlreadyRolled(true);rollingDice();}}>
+            roll
+          </button>}
+
+          {gameStarted && <h1 className='font-semibold font-mono text-white text-lg absolute top-64 right-[405px]'>{roll}</h1>}
 
       </div> 
 
