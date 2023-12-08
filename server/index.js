@@ -59,7 +59,25 @@ io.on("connection", (socket) =>{
     })
 
     socket.on("rolling",() => {
-        currentRoll=Math.floor(Math.random()*12);
+        dice1=Math.floor((Math.random()*6)+1);
+        dice2=Math.floor((Math.random()*6)+1);
+        currentRoll=dice1+dice2;
+        for(player of playerList){
+            if(player.num === currentPlayer){
+                if (39<player.position+currentRoll){
+                    player.position=player.position+currentRoll-40
+                    if(player.position===0){
+                        player.money+=300
+                    }
+                    else{player.money+=200}
+                }
+                else{
+                    player.position=player.position+currentRoll
+                }
+            }
+        }
+        
+        io.emit("updatePlayers", playerList);
         io.emit("rolled",currentRoll);
     })
 })

@@ -47,7 +47,7 @@ function App() {
       console.log("AAA")
       setPlayers(data)
     })
-  })
+  }, )
 
   useEffect(() =>{
     socket.on('nextTurn', (data) => {
@@ -102,7 +102,7 @@ function App() {
           {showButton && <button className='absolute right-64 top-96 ring-1 ring-black bg-gradient-to-tr from-slate-800 to-slate-900 rounded-xl text-white font-mono h-10 w-40 font-bold text-lg transition duration-300 ease-in-out hover:scale-105' 
           onClick={() => {sendMessage();toggleButton();}} > Connect</button>}
 
-          {yourTurn && <button className=' absolute bottom-48 left-1/2 ring-1 ring-black bg-gradient-to-tr from-slate-800 to-slate-900 rounded-xl text-white font-mono h-10 w-40 font-bold text-lg transition duration-300 ease-in-out hover:scale-105'
+          {yourTurn && alreadyRolled && <button className='absolute bottom-48 left-1/2 ring-1 ring-black bg-gradient-to-tr from-slate-800 to-slate-900 rounded-xl text-white font-mono h-10 w-40 font-bold text-lg transition duration-300 ease-in-out hover:scale-105'
           onClick={() => {endTurn();}}>
             <h1>End Turn</h1>
           </button>}
@@ -126,6 +126,7 @@ function App() {
                     <div className='flex justify-between'>
                       <p className='ml-20'>{player.name}</p>
                       <p className='mr-8'>${player.money}</p>
+                      <p className='mr-8'>pos:{player.position}</p>
                     </div>
                   </li>
                 ))}
