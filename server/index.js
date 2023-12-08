@@ -76,9 +76,8 @@ io.on("connection", (socket) =>{
                 }
             }
         }
-        
         io.emit("updatePlayers", playerList);
-        io.emit("rolled",currentRoll);
+        io.emit("rolled",currentRoll,dice1,dice2);
     })
 })
 

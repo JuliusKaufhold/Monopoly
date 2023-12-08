@@ -14,6 +14,8 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false)
   const [roll,setRoll] = useState("roll");
   const [alreadyRolled, setAlreadyRolled] = useState(false)
+  const [dice1,setDice1] = useState()
+  const [dice2,setDice2] = useState()
 
   //player-list
   const [players, setPlayers] = useState([]);
@@ -52,7 +54,9 @@ function App() {
   useEffect(() =>{
     socket.on('nextTurn', (data) => {
       console.log("WWW")
-      setRoll("roll")
+      setRoll("")
+      setDice1("")
+      setDice2("")
       if(socket.id === data){
         setYourTurn(true);
         setAlreadyRolled(false);
@@ -68,8 +72,13 @@ function App() {
   })
 
   useEffect(() =>{
-    socket.on("rolled", (data) => {
-      setRoll(data)
+    socket.on("rolled", (curRoll,d1,d2) => {
+      setRoll(curRoll)
+      setDice1(d1)
+      setDice2(d2)
+      if(d1===d2){
+        setAlreadyRolled(false)
+      }
     })
   })
 
@@ -102,7 +111,7 @@ function App() {
           {showButton && <button className='absolute right-64 top-96 ring-1 ring-black bg-gradient-to-tr from-slate-800 to-slate-900 rounded-xl text-white font-mono h-10 w-40 font-bold text-lg transition duration-300 ease-in-out hover:scale-105' 
           onClick={() => {sendMessage();toggleButton();}} > Connect</button>}
 
-          {yourTurn && alreadyRolled && <button className='absolute bottom-48 left-1/2 ring-1 ring-black bg-gradient-to-tr from-slate-800 to-slate-900 rounded-xl text-white font-mono h-10 w-40 font-bold text-lg transition duration-300 ease-in-out hover:scale-105'
+          {yourTurn && alreadyRolled && <button className='absolute bottom-48 right-[345px] ring-1 ring-black bg-gradient-to-tr from-slate-800 to-slate-900 rounded-xl text-white font-mono h-10 w-40 font-bold text-lg transition duration-300 ease-in-out hover:scale-105'
           onClick={() => {endTurn();}}>
             <h1>End Turn</h1>
           </button>}
@@ -112,7 +121,8 @@ function App() {
             roll
           </button>}
 
-          {gameStarted && <h1 className='font-semibold font-mono text-white text-lg absolute top-64 right-[405px]'>{roll}</h1>}
+          {gameStarted && <h1 className='font-semibold font-mono text-white text-lg absolute top-64 right-[405px]'>{dice1} {dice2}</h1>}
+          {gameStarted && <h1 className='font-semibold font-mono text-white text-2xl absolute top-56 right-[413px]'>{roll}</h1>}
 
       </div> 
 
