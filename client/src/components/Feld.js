@@ -3,8 +3,8 @@ const Feld = () => {
   return (
       <div className='ring-2 ring-slate-500 h-[880px] w-[850px] bg-gray-800 rounded-lg'>
         <div className='flex justify-between mx-6'>
-          <div className='bg-gray-900 h-24 w-24 mt-4  rounded-lg ring-2 ring-gray-600'>
-
+          <div className='bg-gray-900 h-24 w-24 mt-4 rounded-lg ring-2 ring-gray-600'>
+            <h1 className='bg-gradient-to-tl from-green-600 to-green-200 inline-block text-transparent bg-clip-text text-2xl font-bold mt-7'>Start</h1>
           </div>
           <div className='bg-gray-900 h-24 w-14 mt-4 ml-2 rounded-lg ring-2 ring-gray-600'>
 
