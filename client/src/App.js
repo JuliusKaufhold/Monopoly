@@ -16,6 +16,12 @@ function App() {
   const [alreadyRolled, setAlreadyRolled] = useState(false)
   const [dice1,setDice1] = useState()
   const [dice2,setDice2] = useState()
+  const [posPlayer1,setPosPlayer1] = useState()
+  const [posPlayer2,setPosPlayer2] = useState()
+  const [posPlayer3,setPosPlayer3] = useState()
+  const [posPlayer4,setPosPlayer4] = useState()
+  const [posPlayer5,setPosPlayer5] = useState()
+  const [posPlayer6,setPosPlayer6] = useState()
 
   //player-list
   const [players, setPlayers] = useState([]);
@@ -43,17 +49,46 @@ function App() {
     socket.emit("rolling")
   }
 
+  const syncPlayerList = () => {
+    socket.emit("syncPlayerList")
+  }
+
+  function updatePOS(){
+    for(let i=0;i<players.length;i++){
+      if(i===0){
+        setPosPlayer1(players[0].position)
+      }
+      if(i===1){
+        setPosPlayer2(players[1].position)
+      }
+      if(i===2){
+        setPosPlayer3(players[2].position)
+      }
+      if(i===3){
+        setPosPlayer4(players[3].position)
+      }
+      if(i===4){
+        setPosPlayer5(players[4].position)
+      }
+      if(i===5){
+        setPosPlayer6(players[5].position)
+      }
+    }
+    console.log(players)
+  }
+
   //get connected player username, insert new player
   useEffect(() => {
     socket.on("updatePlayers", (data) => {
-      console.log("AAA")
       setPlayers(data)
+      console.log(data)
+      console.log(players)
+      syncPlayerList()
     })
   }, )
 
   useEffect(() =>{
     socket.on('nextTurn', (data) => {
-      console.log("WWW")
       setRoll("")
       setDice1("")
       setDice2("")
@@ -66,7 +101,6 @@ function App() {
 
   useEffect(() =>{
     socket.on('started', () => {
-      console.log("BBB")
       setGameStarted(true)
     })
   })
@@ -79,6 +113,12 @@ function App() {
       if(d1===d2){
         setAlreadyRolled(false)
       }
+    })
+  })
+
+  useEffect(() => {
+    socket.on("clientSyncList",(data)=>{
+      updatePOS()
     })
   })
 
@@ -99,7 +139,7 @@ function App() {
 
       {/*Game and connect*/}
       <div className=' flex justify-center bg-slate-900 absolute top-6 left-1/4'>
-        <Feld/>
+        <Feld positionP1={posPlayer1} positionP2={posPlayer2} positionP3={posPlayer3} positionP4={posPlayer4} positionP5={posPlayer5} positionP6={posPlayer6}/>
         
           {/*Username input*/}
           {showButton && <input onKeyDown={(e)=>{if(e.key==="Enter"){sendMessage();toggleButton();}}} placeholder='Username...' className='absolute left-64 top-96 bg-slate-600 text-slate-200 rounded-lg ring-1 ring-black h-10 w-40' 
@@ -128,21 +168,7 @@ function App() {
 
       {/*List with Players*/}
       <div class="flex justify-end pr-12 bg-slate-900 h-screen"> 
-        <div className='bg-gradient-to-tr from-slate-800 to-slate-900 h-60 w-1/4 rounded-xl absolute top-12 ring-2 ring-slate-500'>
-          <div className='text-white text-lg'>
-              <ul className='px-3 py-1 space-y-3 font-semibold font-mono'>
-                {players && players.map(player => (
-                  <li key={player.num}>
-                    <div className='flex justify-between'>
-                      <p className='ml-20'>{player.name}</p>
-                      <p className='mr-8'>${player.money}</p>
-                      <p className='mr-8'>pos:{player.position}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-          </div>
-        </div>
+        <Players playerArray={players}/>
         <Trades/>
         <Properties/>
       </div>

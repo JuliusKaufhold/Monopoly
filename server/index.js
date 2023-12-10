@@ -21,8 +21,7 @@ const io = new Server(server, {
 })
 
 io.on("connection", (socket) =>{
-    io.emit("updatePlayers", playerList);
-
+    
     socket.on("login", (data) =>{
         if (playerList.length<=5){
             playerList.push({id:socket.id ,num: playerList.length,name: data, money:1500, position:0});
@@ -34,7 +33,7 @@ io.on("connection", (socket) =>{
         currentPlayer++;
         for(player of playerList){
             if(player.num === currentPlayer){
-                io.emit('nextTurn', player.id);
+                io.emit('nextTurn', player.id)
             }
         }
         io.emit("started")
@@ -78,6 +77,10 @@ io.on("connection", (socket) =>{
         }
         io.emit("updatePlayers", playerList);
         io.emit("rolled",currentRoll,dice1,dice2);
+    })
+
+    socket.on("syncPlayerList" ,() => {
+        io.emit("clientSyncList", playerList)
     })
 })
 
