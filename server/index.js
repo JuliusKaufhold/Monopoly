@@ -55,7 +55,7 @@ io.on("connection", (socket) =>{
     
     socket.on("login", (data) =>{
         if (playerList.length<=5){
-            playerList.push({id:socket.id ,num: playerList.length,name: data, money:1500, position:0});
+            playerList.push({id:socket.id ,num: playerList.length,name: data, money:1500, position:0 ,ownedProps: []});
         }
         io.emit("updatePlayers", playerList);
     })
@@ -131,8 +131,9 @@ io.on("connection", (socket) =>{
                         property.owner=player.num
                     }
                 })
-                player[property.id]=property.name
+                player.ownedProps.push(property.id)
                 io.emit("updatePlayers", playerList)
+                
             }
         }
     })

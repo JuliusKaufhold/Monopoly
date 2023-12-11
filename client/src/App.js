@@ -81,15 +81,12 @@ function App() {
         setPosPlayer6(players[5].position)
       }
     }
-    console.log(players)
   }
 
   //get connected player username, insert new player
   useEffect(() => {
     socket.on("updatePlayers", (data) => {
       setPlayers(data)
-      console.log(data)
-      console.log(players)
       syncPlayerList()
     })
   }, )
