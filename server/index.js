@@ -42,6 +42,7 @@ const server = http.createServer(app);
 
 var currentPlayer = -1;
 let currentRoll = 0;
+let canBuy=false;
 
 const io = new Server(server, {
     cors: {
@@ -103,15 +104,39 @@ io.on("connection", (socket) =>{
                 else{
                     player.position=player.position+currentRoll
                 }
+                globalProperties.map(property => {
+                    if(property.id===player.position){
+                        if(player.money>=property.cost && property.owner===-1){
+                            canBuy=true
+                        }
+                    }
+                }) 
+                io.emit("OpportunityBuyProperty",canBuy,player.id)
             }
         }
+        canBuy=false
         io.emit("updatePlayers", playerList);
         io.emit("rolled",currentRoll,dice1,dice2);
     })
 
     socket.on("syncPlayerList" ,() => {
-        io.emit("clientSyncList", playerList)
+        io.emit("clientSyncList")
     })
+
+    socket.on("BuyProperty", () => {
+        for(player of playerList){
+            if(player.num===currentPlayer){
+                globalProperties.map(property => {
+                    if(property.id===player.position){
+                        property.owner=player.num
+                    }
+                })
+                player[property.id]=property.name
+                io.emit("updatePlayers", playerList)
+            }
+        }
+    })
+
 })
 
 server.listen(3001, () => {

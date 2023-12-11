@@ -22,6 +22,7 @@ function App() {
   const [posPlayer4,setPosPlayer4] = useState()
   const [posPlayer5,setPosPlayer5] = useState()
   const [posPlayer6,setPosPlayer6] = useState()
+  const [canBuyProperty,setCanBuyProperty] = useState(false)
 
   //player-list
   const [players, setPlayers] = useState([]);
@@ -38,6 +39,7 @@ function App() {
 
   const endTurn = () => {
     setYourTurn(false)
+    setCanBuyProperty(false)
     socket.emit("endTurn")
   }
 
@@ -51,6 +53,11 @@ function App() {
 
   const syncPlayerList = () => {
     socket.emit("syncPlayerList")
+  }
+
+  const BuyProperty = () => {
+    setCanBuyProperty(false)
+    socket.emit("BuyProperty")
   }
 
   function updatePOS(){
@@ -117,8 +124,16 @@ function App() {
   })
 
   useEffect(() => {
-    socket.on("clientSyncList",(data)=>{
+    socket.on("clientSyncList",()=>{
       updatePOS()
+    })
+  })
+
+  useEffect(() => {
+    socket.on("OpportunityBuyProperty",(canBuy,data) => {
+      if(socket.id === data){
+        setCanBuyProperty(canBuy)
+      } 
     })
   })
 
@@ -134,6 +149,11 @@ function App() {
             onClick={() => {start();}}>
               <h1>start game</h1>
           </button>}
+
+        {canBuyProperty && <button className='bg-gradient-to-tr from-slate-800 to-slate-900 absolute top-8 right-4 h-12 w-32 rounded-2xl ring-2 ring-black transition duration-300 ease-in-out hover:scale-105 text-white font-mono text-lg font-bold'
+          onClick={() => {BuyProperty();}}>
+            Buy
+        </button>}
         </div>
       </div>
 
@@ -170,7 +190,7 @@ function App() {
       <div class="flex justify-end pr-12 bg-slate-900 h-screen"> 
         <Players playerArray={players}/>
         <Trades/>
-        <Properties/>
+        <Properties canBuy={canBuyProperty}/>
       </div>
 
     </div>
