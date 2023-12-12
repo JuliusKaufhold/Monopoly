@@ -57,7 +57,7 @@ io.on("connection", (socket) =>{
         if (playerList.length<=5){
             playerList.push({id:socket.id ,num: playerList.length,name: data, money:1500, position:0 ,ownedProps: []});
         }
-        io.emit("updatePlayers", playerList);
+        io.emit("updatePlayers", playerList, globalProperties);
     })
 
     socket.on("updateGameStart",() =>{
@@ -109,13 +109,36 @@ io.on("connection", (socket) =>{
                         if(player.money>=property.cost && property.owner===-1){
                             canBuy=true
                         }
+                        if(property.owner!=player.num && property.owner!=-1){
+                            switch(property.housesOnProperty){
+                                case 0:
+                                    player.money-=property.defaultRent
+                                    break;
+                                case 1:
+                                    player.money-=property.oneHouseRent
+                                    break;
+                                case 2:
+                                    player.money-=property.twoHouseRent
+                                    break;
+                                case 3:
+                                    player.money-=property.threeHouseRent
+                                    break;
+                                case 4:
+                                    player.money-=property.fourHouseRent
+                                    break;
+                                case 5:
+                                    player.money-=property.hotelRent
+                                    break;
+                                default: break;
+                            }
+                        }
                     }
                 }) 
                 io.emit("OpportunityBuyProperty",canBuy,player.id)
             }
         }
         canBuy=false
-        io.emit("updatePlayers", playerList);
+        io.emit("updatePlayers", playerList, globalProperties);
         io.emit("rolled",currentRoll,dice1,dice2);
     })
 
@@ -129,11 +152,11 @@ io.on("connection", (socket) =>{
                 globalProperties.map(property => {
                     if(property.id===player.position){
                         property.owner=player.num
+                        player.money-=property.cost
+                        player.ownedProps.push(property.id)
                     }
-                })
-                player.ownedProps.push(property.id)
-                io.emit("updatePlayers", playerList)
-                
+                })        
+                io.emit("updatePlayers", playerList, globalProperties)     
             }
         }
     })

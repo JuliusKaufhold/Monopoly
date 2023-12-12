@@ -23,6 +23,7 @@ function App() {
   const [posPlayer5,setPosPlayer5] = useState()
   const [posPlayer6,setPosPlayer6] = useState()
   const [canBuyProperty,setCanBuyProperty] = useState(false)
+  const [propertyList, setPropertyList] = useState([])
 
   //player-list
   const [players, setPlayers] = useState([]);
@@ -85,8 +86,9 @@ function App() {
 
   //get connected player username, insert new player
   useEffect(() => {
-    socket.on("updatePlayers", (data) => {
-      setPlayers(data)
+    socket.on("updatePlayers", (playerServer,propertyServer) => {
+      setPlayers(playerServer)
+      setPropertyList(propertyServer)
       syncPlayerList()
     })
   }, )
