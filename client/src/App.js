@@ -189,7 +189,7 @@ function App() {
       <div class="flex justify-end pr-12 bg-slate-900 h-screen"> 
         <Players playerArray={players}/>
         <Trades/>
-        <Properties canBuy={canBuyProperty}/>
+        <Properties canBuy={canBuyProperty} propertylist={propertyList} socketid={socket.id} playerlist={players}/>
       </div>
 
     </div>
