@@ -55,7 +55,7 @@ io.on("connection", (socket) =>{
     
     socket.on("login", (data) =>{
         if (playerList.length<=5){
-            playerList.push({id:socket.id ,num: playerList.length,name: data, money:1500, position:0 ,ownedProps: []});
+            playerList.push({id:socket.id ,num: playerList.length,name: data, money:1500, position:0 ,ownedProps: [],isBankrupt:false});
         }
         io.emit("updatePlayers", playerList, globalProperties);
     })
@@ -71,6 +71,14 @@ io.on("connection", (socket) =>{
     })
 
     socket.on("endTurn", () => {
+        playerList.map(player => {
+            if(player.num===currentPlayer){
+                if(player.isBankrupt===true){
+                    return;
+                }
+            }
+        })
+        
         if(currentPlayer === playerList.length-1){
             currentPlayer = 0;
             for(player of playerList){
@@ -111,32 +119,62 @@ io.on("connection", (socket) =>{
                         }
                         if(property.owner!=player.id && property.owner!=-1){
                             let rent;
-                            switch(property.housesOnProperty){
-                                case 0:
-                                    player.money-=property.defaultRent
-                                    rent=property.defaultRent
-                                    break;
-                                case 1:
-                                    player.money-=property.oneHouseRent
-                                    rent=property.oneHouseRent
-                                    break;
-                                case 2:
-                                    player.money-=property.twoHouseRent
-                                    rent=property.twoHouseRent
-                                    break;
-                                case 3:
-                                    player.money-=property.threeHouseRent
-                                    rent=property.threeHouseRent
-                                    break;
-                                case 4:
-                                    player.money-=property.fourHouseRent
-                                    rent=property.fourHouseRent
-                                    break;
-                                case 5:
-                                    player.money-=property.hotelRent
-                                    rent=property.hotelRent
-                                    break;
-                                default: break;
+
+                            if(property.id===5 || property.id===15 || property.id===25 || property.id===35){
+                                switch(property.othersOwned){
+                                    case 0:
+                                        player.money-=property.defaultRent
+                                        rent=property.defaultRent
+                                        break;
+
+                                    case 0:
+                                        player.money-=property.oneOtherRent
+                                        rent=property.oneOtherRent
+                                        break;
+
+                                    case 0:
+                                        player.money-=property.twoOtherRent
+                                        rent=property.twoOtherRent
+                                        break;
+
+                                    case 0:
+                                        player.money-=property.threeOtherRent
+                                        rent=property.threeOtherRent
+                                        break;
+                                    default: break;
+                                }
+                            }
+                            else{
+                                switch(property.housesOnProperty){
+                                    case 0:
+                                        player.money-=property.defaultRent
+                                        rent=property.defaultRent
+                                        break;
+                                    case 1:
+                                        player.money-=property.oneHouseRent
+                                        rent=property.oneHouseRent
+                                        break;
+                                    case 2:
+                                        player.money-=property.twoHouseRent
+                                        rent=property.twoHouseRent
+                                        break;
+                                    case 3:
+                                        player.money-=property.threeHouseRent
+                                        rent=property.threeHouseRent
+                                        break;
+                                    case 4:
+                                        player.money-=property.fourHouseRent
+                                        rent=property.fourHouseRent
+                                        break;
+                                    case 5:
+                                        player.money-=property.hotelRent
+                                        rent=property.hotelRent
+                                        break;
+                                    default: break;
+                                }
+                            }
+                            if(player.money<0){
+                                player.isBankrupt=true
                             }
                             playerList.map(player => {
                                 if(player.id===property.owner){
@@ -184,12 +222,28 @@ io.on("connection", (socket) =>{
         if(playermoney<priceHouse){return;}
         globalProperties.map(property => {
             if(property.id===propertyID){
-                console.log("O")
                 property.housesOnProperty++;
-                console.log(property.housesOnProperty)
                 playerList.map(player => {
                 if(ObjectOwner===player.id){
                     player.money-=priceHouse
+                }
+                })
+            }
+        })
+        io.emit("updatePlayers", playerList, globalProperties) 
+    })
+
+    socket.on("SellHouse", (propertyID,ObjectOwner,priceHouse,HousesAlreadyBuilt) => {
+        if(HousesAlreadyBuilt===0){return;}
+        globalProperties.map(property => {
+            if(property.id===propertyID){
+                property.housesOnProperty--;
+                playerList.map(player => {
+                if(ObjectOwner===player.id){
+                    player.money+=priceHouse
+                    if(player.money>0){
+                        player.isBankrupt=false
+                    }
                 }
                 })
             }
@@ -202,3 +256,19 @@ io.on("connection", (socket) =>{
 server.listen(3001, () => {
     console.log("SERVER IS RUNNING");
 });
+
+/* TODO:
+3*pasch:prison
+2*base rent if street owned
+company rent
+even build
+event felder
+bankrupt button
+mortages
+delete properties
+auctions
+trades
+board design
+event log
+chat
+*/

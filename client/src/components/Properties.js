@@ -24,12 +24,11 @@ const Properties = (props) => {
       if(obj.owner!==owner){
         x++;
       }
+      if(obj.streetID===-1){
+        x++;
+      }
     })
     return x===0;
-  }
-
-  function sellHouse(propertyID,ObjectOwner,housePrice,housesOnProperty){
-
   }
 
   useEffect(() => {
@@ -52,7 +51,7 @@ const Properties = (props) => {
                       Buy
                     </button>}
                     {canBuyHouse(object.streetID,object.owner) && <button classname='bg-gradient-to-tr from-slate-800 to-slate-900 absolute top-8 right-4 h-12 w-32 rounded-2xl ring-2 ring-black transition duration-300 ease-in-out hover:scale-105 text-white font-mono text-lg font-bold'
-                    onClick={sellHouse(object.id,object.owner,object.housePrice,object.housesOnProperty)}>
+                    onClick={() => props.childSellHouse(object.id,object.owner,object.housePrice,object.housesOnProperty)}>
                       Sell
                     </button>}
                   </div>
