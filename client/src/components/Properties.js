@@ -21,35 +21,11 @@ const Properties = (props) => {
     })
 
     street.map(obj => {
-      if(obj.owner!=owner){
+      if(obj.owner!==owner){
         x++;
       }
     })
     return x===0;
-  }
-
-  function buyHouse(propertyID,ObjectOwner,priceHouse,HousesAlreadyBuilt){
-   /* Has to be server sided */
-    /*  if(HousesAlreadyBuilt===5){return;}
-    let playermoney;
-    props.playerlist.map(player => {
-      if(ObjectOwner===player.id){
-        playermoney=player.money
-      }
-    })
-    if(playermoney<priceHouse){return;}
-    props.propertylist.map(property => {
-      if(property.id===propertyID){
-        console.log("O")
-        property.housesOnProperty++;
-        console.log(property.housesOnProperty)
-        props.playerlist.map(player => {
-          if(ObjectOwner===player.id){
-            player.money-=priceHouse
-          }
-        })
-      }
-    }) */
   }
 
   function sellHouse(propertyID,ObjectOwner,housePrice,housesOnProperty){
@@ -72,7 +48,7 @@ const Properties = (props) => {
                   </div>
                   <div className='flex justify-end'>
                     {canBuyHouse(object.streetID,object.owner) && <button classname='bg-gradient-to-tr from-slate-800 to-slate-900 absolute top-8 right-4 h-12 w-32 rounded-2xl ring-2 ring-black transition duration-300 ease-in-out hover:scale-105 text-white font-mono text-lg font-bold'
-                    onClick={buyHouse(object.id,object.owner,object.housePrice,object.housesOnProperty)}>
+                    onClick={() => props.childBuyHouse(object.id,object.owner,object.housePrice,object.housesOnProperty)}>
                       Buy
                     </button>}
                     {canBuyHouse(object.streetID,object.owner) && <button classname='bg-gradient-to-tr from-slate-800 to-slate-900 absolute top-8 right-4 h-12 w-32 rounded-2xl ring-2 ring-black transition duration-300 ease-in-out hover:scale-105 text-white font-mono text-lg font-bold'

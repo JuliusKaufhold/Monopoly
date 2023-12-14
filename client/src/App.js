@@ -61,6 +61,10 @@ function App() {
     socket.emit("BuyProperty")
   }
 
+  function BuyHouse (propertyID,ObjectOwner,priceHouse,HousesAlreadyBuilt){
+    socket.emit("BuyHouse",propertyID,ObjectOwner,priceHouse,HousesAlreadyBuilt)
+  }
+
   function updatePOS(){
     for(let i=0;i<players.length;i++){
       if(i===0){
@@ -189,7 +193,7 @@ function App() {
       <div class="flex justify-end pr-12 bg-slate-900 h-screen"> 
         <Players playerArray={players}/>
         <Trades/>
-        <Properties canBuy={canBuyProperty} propertylist={propertyList} socketid={socket.id} playerlist={players}/>
+        <Properties canBuy={canBuyProperty} propertylist={propertyList} socketid={socket.id} playerlist={players} childBuyHouse={BuyHouse}/>
       </div>
 
     </div>

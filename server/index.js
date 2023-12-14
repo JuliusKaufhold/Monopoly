@@ -33,7 +33,7 @@ const globalProperties=[
     {id:34,name:"Bahnhofstraße",cost:320,housePrice:200,defaultRent:28,oneHouseRent:150,twoHouseRent:450,threeHouseRent:1000,fourHouseRent:1200,hotelRent:1400,housesOnProperty:0,owner:-1,streetID:7},
     {id:35,name:"Hauptbahnhof",cost:200,defaultRent:25,oneOtherRent:50,twoOtherRent:100,threeOtherRent:200,othersOwned:0,owner:-1,streetID:-1},
     {id:37,name:"Parkstraße",cost:350,housePrice:200,defaultRent:35,oneHouseRent:175,twoHouseRent:500,threeHouseRent:1100,fourHouseRent:1300,hotelRent:1500,housesOnProperty:0,owner:-1,streetID:8},
-    {id:39,name:"Schlossallee",cost:400,housePrice:50,defaultRent:50,oneHouseRent:200,twoHouseRent:600,threeHouseRent:1400,fourHouseRent:1700,hotelRent:2000,housesOnProperty:0,owner:-1,streetID:8},
+    {id:39,name:"Schlossallee",cost:400,housePrice:200,defaultRent:50,oneHouseRent:200,twoHouseRent:600,threeHouseRent:1400,fourHouseRent:1700,hotelRent:2000,housesOnProperty:0,owner:-1,streetID:8},
 ]
 
 app.use(cors());
@@ -110,27 +110,39 @@ io.on("connection", (socket) =>{
                             canBuy=true
                         }
                         if(property.owner!=player.id && property.owner!=-1){
+                            let rent;
                             switch(property.housesOnProperty){
                                 case 0:
                                     player.money-=property.defaultRent
+                                    rent=property.defaultRent
                                     break;
                                 case 1:
                                     player.money-=property.oneHouseRent
+                                    rent=property.oneHouseRent
                                     break;
                                 case 2:
                                     player.money-=property.twoHouseRent
+                                    rent=property.twoHouseRent
                                     break;
                                 case 3:
                                     player.money-=property.threeHouseRent
+                                    rent=property.threeHouseRent
                                     break;
                                 case 4:
                                     player.money-=property.fourHouseRent
+                                    rent=property.fourHouseRent
                                     break;
                                 case 5:
                                     player.money-=property.hotelRent
+                                    rent=property.hotelRent
                                     break;
                                 default: break;
                             }
+                            playerList.map(player => {
+                                if(player.id===property.owner){
+                                    player.money+=rent
+                                }
+                            })
                         }
                     }
                 }) 
@@ -156,9 +168,33 @@ io.on("connection", (socket) =>{
                         player.ownedProps.push(property.id)
                     }
                 })        
-                io.emit("updatePlayers", playerList, globalProperties)     
+                io.emit("updatePlayers", playerList, globalProperties)
             }
         }
+    })
+
+    socket.on("BuyHouse", (propertyID,ObjectOwner,priceHouse,HousesAlreadyBuilt) => {
+        if(HousesAlreadyBuilt===5){return;}
+        let playermoney;
+        playerList.map(player => {
+        if(ObjectOwner===player.id){
+            playermoney=player.money
+        }
+        })
+        if(playermoney<priceHouse){return;}
+        globalProperties.map(property => {
+            if(property.id===propertyID){
+                console.log("O")
+                property.housesOnProperty++;
+                console.log(property.housesOnProperty)
+                playerList.map(player => {
+                if(ObjectOwner===player.id){
+                    player.money-=priceHouse
+                }
+                })
+            }
+        })
+        io.emit("updatePlayers", playerList, globalProperties) 
     })
 
 })
