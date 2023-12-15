@@ -120,11 +120,12 @@ function App() {
   })
 
   useEffect(() =>{
-    socket.on("rolled", (curRoll,d1,d2) => {
+    socket.on("rolled", (curRoll,d1,d2,paschCount) => {
       setRoll(curRoll)
       setDice1(d1)
       setDice2(d2)
       if(d1===d2){
+        if(paschCount===3){return}
         setAlreadyRolled(false)
       }
     })

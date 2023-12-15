@@ -42,6 +42,7 @@ const server = http.createServer(app);
 
 var currentPlayer = -1;
 let currentRoll = 0;
+let paschCount=0;
 let canBuy=false;
 
 const io = new Server(server, {
@@ -78,7 +79,7 @@ io.on("connection", (socket) =>{
                 }
             }
         })
-        
+        paschCount=0
         if(currentPlayer === playerList.length-1){
             currentPlayer = 0;
             for(player of playerList){
@@ -100,6 +101,9 @@ io.on("connection", (socket) =>{
         dice1=Math.floor((Math.random()*6)+1);
         dice2=Math.floor((Math.random()*6)+1);
         currentRoll=dice1+dice2;
+        if(dice1===dice2){
+            paschCount++
+        }
         for(player of playerList){
             if(player.num === currentPlayer){
                 if (39<player.position+currentRoll){
@@ -189,7 +193,7 @@ io.on("connection", (socket) =>{
         }
         canBuy=false
         io.emit("updatePlayers", playerList, globalProperties);
-        io.emit("rolled",currentRoll,dice1,dice2);
+        io.emit("rolled",currentRoll,dice1,dice2,paschCount);
     })
 
     socket.on("syncPlayerList" ,() => {
@@ -258,7 +262,6 @@ server.listen(3001, () => {
 });
 
 /* TODO:
-3*pasch:prison
 2*base rent if street owned
 company rent
 even build

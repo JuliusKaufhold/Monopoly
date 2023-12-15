@@ -20,7 +20,7 @@ const Properties = (props) => {
       return property.streetID===wantToBuyOn;
     })
 
-    street.map(obj => {
+    street.forEach(obj =>{
       if(obj.owner!==owner){
         x++;
       }
@@ -28,6 +28,7 @@ const Properties = (props) => {
         x++;
       }
     })
+
     return x===0;
   }
 
