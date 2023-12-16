@@ -28,7 +28,7 @@ const Properties = (props) => {
         x++;
       }
     })
-
+    
     return x===0;
   }
 

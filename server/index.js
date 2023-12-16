@@ -43,6 +43,7 @@ const server = http.createServer(app);
 var currentPlayer = -1;
 let currentRoll = 0;
 let paschCount=0;
+let streetNum=-2;
 let canBuy=false;
 
 const io = new Server(server, {
@@ -98,8 +99,9 @@ io.on("connection", (socket) =>{
     })
 
     socket.on("rolling",() => {
-        dice1=Math.floor((Math.random()*6)+1);
-        dice2=Math.floor((Math.random()*6)+1);
+        /* (Math.random()*6)+ */
+        dice1=Math.floor(1);
+        dice2=Math.floor(0);
         currentRoll=dice1+dice2;
         if(dice1===dice2){
             paschCount++
@@ -115,7 +117,8 @@ io.on("connection", (socket) =>{
                 }
                 else{
                     player.position=player.position+currentRoll
-                }
+                }                
+
                 globalProperties.map(property => {
                     if(property.id===player.position){
                         if(player.money>=property.cost && property.owner===-1){
@@ -149,6 +152,7 @@ io.on("connection", (socket) =>{
                                 }
                             }
                             else{
+                                
                                 switch(property.housesOnProperty){
                                     case 0:
                                         player.money-=property.defaultRent
@@ -201,15 +205,30 @@ io.on("connection", (socket) =>{
     })
 
     socket.on("BuyProperty", () => {
+        
         for(player of playerList){
             if(player.num===currentPlayer){
                 globalProperties.map(property => {
                     if(property.id===player.position){
                         property.owner=player.id
                         player.money-=property.cost
+                        streetNum=property.streetID
                         player.ownedProps.push(property.id)
                     }
-                })        
+                })    
+
+                let street = globalProperties.filter((property) => {
+                    return property.streetID===streetNum;
+                })
+
+                const allEqual = street => street.every(prop => prop.owner===player.id)
+
+                if(allEqual(street)===true){
+                    globalProperties.map(property => {
+                        if(property.streetID===streetNum){property.defaultRent*=2}
+                    })
+                }
+                streetNum=-2
                 io.emit("updatePlayers", playerList, globalProperties)
             }
         }
@@ -244,7 +263,7 @@ io.on("connection", (socket) =>{
                 property.housesOnProperty--;
                 playerList.map(player => {
                 if(ObjectOwner===player.id){
-                    player.money+=priceHouse
+                    player.money+=priceHouse/2
                     if(player.money>0){
                         player.isBankrupt=false
                     }
@@ -262,7 +281,6 @@ server.listen(3001, () => {
 });
 
 /* TODO:
-2*base rent if street owned
 company rent
 even build
 event felder
