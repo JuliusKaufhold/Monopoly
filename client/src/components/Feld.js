@@ -178,11 +178,16 @@ const Feld = (props) => {
 
         <div className='flex justify-between mx-6 text-white text-sm font-medium'>
           <div className='bg-gradient-to-l from-blue-600/40 to-blue-800/40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
+              
+              <div class="flex items-center justify-center col-start-1 rotate-90">
+                <h1>400$</h1>
+              </div>
+              
               <div class="flex items-center justify-center col-start-3 rotate-90">
                 <h1>Schloss-<br/>allee</h1>
               </div>
 
-            <div className='flex items-center justify-center col-start-4 col-span-2'>
+            <div className='flex items-center justify-center rotate-90 col-start-4 col-span-2'>
               {props.positionP1===39 && <h1 className='bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===39 && <h1 className='bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
               {props.positionP3===39 && <h1 className='bg-gradient-to-tl from-yellow-600 to-yellow-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
@@ -205,6 +210,10 @@ const Feld = (props) => {
 
             <div class="flex items-center justify-center col-start-3 -rotate-90">
               <h1>See-<br/>Straße</h1>
+            </div>
+
+            <div class="flex items-center justify-center col-start-5 -rotate-90">
+              <h1>140$</h1>
             </div>
 
           </div>
@@ -242,16 +251,25 @@ const Feld = (props) => {
               <h1>Electric<br/>Company</h1>
             </div>
 
+            <div class="flex items-center justify-center col-start-5 -rotate-90">
+              <h1>150$</h1>
+            </div>
+
           </div>
         </div>
 
         <div className='flex justify-between mx-6 text-white text-sm font-medium'>
-          <div className='bg-gradient-to-l from-blue-600/40 to-blue-800/40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-col-5'>
-              <div class="flex items-center justify-center col-start-3 rotate-90">
-                <h1>Park-<br/>Straße</h1>
-              </div>
+          <div className='bg-gradient-to-l from-blue-600/40 to-blue-800/40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
+            
+            <div class="flex items-center justify-center col-start-1 rotate-90">
+              <h1>350$</h1>
+            </div>
+            
+            <div class="flex items-center justify-center col-start-3 rotate-90">
+              <h1>Park-<br/>Straße</h1>
+            </div>
 
-            <div className='flex items-center justify-center col-start-4 col-span-2'>
+            <div className='flex items-center justify-center rotate-90 col-start-4 col-span-2'>
               {props.positionP1===37 && <h1 className=' bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===37 && <h1 className=' bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
               {props.positionP3===37 && <h1 className=' bg-gradient-to-tl from-yellow-600 to-yellow-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
@@ -273,6 +291,10 @@ const Feld = (props) => {
             </div>
             <div class="flex items-center justify-center col-start-3 -rotate-90">
               <h1>Hafen-<br/>Straße</h1>
+            </div>
+
+            <div class="flex items-center justify-center col-start-5 -rotate-90">
+              <h1>140$</h1>
             </div>
 
           </div>
@@ -305,11 +327,19 @@ const Feld = (props) => {
               <h1>Neue-<br/>Straße</h1>
             </div>
 
+            <div class="flex items-center justify-center col-start-5 -rotate-90">
+              <h1>160$</h1>
+            </div>
+
           </div>
         </div>
 
         <div className='flex justify-between mx-6 text-white text-sm font-medium'>
           <div className='bg-gray-900 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5 '>
+
+            <div class="flex items-center justify-center col-start-1 rotate-90">
+              <h1>200$</h1>
+            </div>
 
             <div class="flex items-center justify-center col-start-3 rotate-90">
               <h1>Haupt-<br/>Bahnhof</h1>
@@ -339,11 +369,19 @@ const Feld = (props) => {
               <h1>West-<br/>Bahnhof</h1>
             </div>
 
+            <div class="flex items-center justify-center col-start-5 -rotate-90">
+              <h1>200$</h1>
+            </div>
+
           </div>
         </div>
 
         <div className='flex justify-between mx-6 text-white text-sm font-medium'>
           <div className='bg-gradient-to-l from-green-400/40 to-green-500/40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
+
+            <div class="flex items-center justify-center col-start-1 rotate-90">
+              <h1>320$</h1>
+            </div>
 
             <div class="flex items-center justify-center col-start-3 rotate-90">
               <h1>Bahnhof-<br/>Straße</h1>
@@ -371,6 +409,10 @@ const Feld = (props) => {
             </div>
             <div class="flex items-center justify-center col-start-3 -rotate-90">
               <h1>Münchner<br/>Straße</h1>
+            </div>
+
+            <div class="flex items-center justify-center col-start-5 -rotate-90">
+              <h1>180$</h1>
             </div>
 
           </div>
@@ -406,6 +448,10 @@ const Feld = (props) => {
         <div className='flex justify-between mx-6 text-white text-sm font-medium'>
           <div className='bg-gradient-to-l from-green-400/40 to-green-500/40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
 
+            <div class="flex items-center justify-center col-start-1 rotate-90">
+              <h1>300$</h1>
+            </div>
+
             <div class="flex items-center justify-center col-start-3 rotate-90">
               <h1>Haupt-<br/>Straße</h1>
             </div>
@@ -434,11 +480,19 @@ const Feld = (props) => {
               <h1>Wiener-<br/>Straße</h1>
             </div>
 
+            <div class="flex items-center justify-center col-start-5 -rotate-90">
+              <h1>180$</h1>
+            </div>
+
           </div>
         </div>
 
         <div className='flex justify-between mx-6 text-white text-sm font-medium'>
           <div className='bg-gradient-to-l from-green-400/40 to-green-500/40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
+
+            <div class="flex items-center justify-center col-start-1 rotate-90">
+              <h1>300$</h1>
+            </div>
 
             <div class="flex items-center justify-center col-start-3 rotate-90">
               <h1>Rathaus-<br/>Platz</h1>
@@ -466,6 +520,10 @@ const Feld = (props) => {
             </div>
             <div class="flex items-center justify-center col-start-3 -rotate-90">
               <h1>Berliner-<br/>Straße</h1>
+            </div>
+
+            <div class="flex items-center justify-center col-start-5 -rotate-90">
+              <h1>200$</h1>
             </div>
 
           </div>
