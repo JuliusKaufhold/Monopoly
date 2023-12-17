@@ -24,7 +24,7 @@ const Feld = (props) => {
             <h1 className='bg-gradient-to-tl from-green-600 to-green-200 inline-block text-transparent bg-clip-text text-2xl font-bold'>Start</h1>
           </div>
 
-          <div className='bg-yellow-950 bg-opacity-40 h-24 w-16 mt-4 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
+          <div className='bg-gradient-to-t from-yellow-900/40 to-amber-950/40 h-24 w-16 mt-4 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
             <div className='flex items-center justify-center row-span-2'>
               {props.positionP1===1 && <h1 className='bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===1 && <h1 className='bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -35,6 +35,7 @@ const Feld = (props) => {
             </div>
             <div>
               <h1>Bad-<br/>Straße</h1>
+              <h1>60$</h1>
             </div>
             
           </div>
@@ -51,7 +52,7 @@ const Feld = (props) => {
             
           </div>
 
-          <div className='bg-yellow-950 bg-opacity-40 h-24 w-16 mt-4 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
+          <div className='bg-gradient-to-t from-yellow-900/40 to-amber-950/40 h-24 w-16 mt-4 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
             <div className='flex items-center justify-center row-span-2'>
               {props.positionP1===3 && <h1 className='bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===3 && <h1 className='bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -62,6 +63,7 @@ const Feld = (props) => {
             </div>
             <div>
               <h1>Turm-<br/>Straße</h1>
+              <h1>60$</h1>
             </div>
            
           </div>
@@ -92,11 +94,12 @@ const Feld = (props) => {
             </div>
             <div>
               <h1>Süd-<br/>Bahnhof</h1>
+              <h1>200$</h1>
             </div>
             
           </div>
 
-          <div className='bg-blue-300 bg-opacity-50 h-24 w-16 mt-4 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
+          <div className='bg-gradient-to-t from-blue-300/60 to-blue-400/60  h-24 w-16 mt-4 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
             <div className='flex items-center justify-center row-span-2'>
               {props.positionP1===6 && <h1 className='bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===6 && <h1 className='bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -107,6 +110,7 @@ const Feld = (props) => {
             </div>
             <div>
               <h1>Chaussee<br/>Straße</h1>
+              <h1>100$</h1>
             </div>
            
           </div>
@@ -123,7 +127,7 @@ const Feld = (props) => {
            
           </div>
 
-          <div className='bg-blue-300 bg-opacity-50 h-24 w-16 mt-4 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
+          <div className='bg-gradient-to-t from-blue-300/60 to-blue-400/60 h-24 w-16 mt-4 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
             <div className='flex items-center justify-center row-span-2'>
               {props.positionP1===8 && <h1 className='bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===8 && <h1 className='bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -134,11 +138,12 @@ const Feld = (props) => {
             </div>
             <div>
               <h1>Elisen-<br/>Straße</h1>
+              <h1>100$</h1>
             </div>
            
           </div>
 
-          <div className='bg-blue-300 bg-opacity-50 h-24 w-16 mt-4 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
+          <div className='bg-gradient-to-t from-blue-300/60 to-blue-400/60 h-24 w-16 mt-4 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
             <div className='flex items-center justify-center row-span-2'>
               {props.positionP1===9 && <h1 className='bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===9 && <h1 className='bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -149,6 +154,7 @@ const Feld = (props) => {
             </div>
             <div>
               <h1>Post-<br/>Straße</h1>
+              <h1>120$</h1>
             </div>
           
           </div>
@@ -171,12 +177,14 @@ const Feld = (props) => {
 
 
         <div className='flex justify-between mx-6 text-white text-sm font-medium'>
-          <div className='bg-blue-600 bg-opacity-40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
-            <div class="flex items-center justify-center col-start-3 rotate-90">
-              <h1>Schloss-<br/>allee</h1>
-            </div>
+          <div className='bg-gradient-to-l from-blue-600/40 to-blue-800/40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black'>
+          <div class="rotate-90 grid grid-rows-auto row h-full w-24">
+             <h1 class="row-start-6">220$</h1>
+              <div class="row-start-2 row-span-3">
+                <h1>Schloss-<br/>Straße</h1>
+              </div>
 
-            <div className='flex items-center justify-center col-start-4 rotate-90 col-span-2'>
+            <div className='flex items-center justify-center row-start-1 row-span-1'>
               {props.positionP1===39 && <h1 className='bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===39 && <h1 className='bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
               {props.positionP3===39 && <h1 className='bg-gradient-to-tl from-yellow-600 to-yellow-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
@@ -184,10 +192,10 @@ const Feld = (props) => {
               {props.positionP5===39 && <h1 className='bg-gradient-to-tl from-violet-600 to-violet-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
               {props.positionP6===39 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
-
+            </div>
           </div>
 
-          <div className='bg-pink-300 bg-opacity-60 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
+          <div className='bg-gradient-to-r from-pink-400/40 to-pink-500/40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
             <div className='flex items-center justify-center col-start-1 rotate-90 col-span-2'>
               {props.positionP1===11 && <h1 className='bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===11 && <h1 className='bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -240,12 +248,14 @@ const Feld = (props) => {
         </div>
 
         <div className='flex justify-between mx-6 text-white text-sm font-medium'>
-          <div className='bg-blue-600 bg-opacity-40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
+          <div className='bg-gradient-to-l from-blue-600/40 to-blue-800/40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black'>
+            <div class="rotate-90 grid grid-rows-auto row h-full w-24">
+             <h1 class="row-start-6">220$</h1>
+              <div class="row-start-2 row-span-3">
+                <h1>Park-<br/>Straße</h1>
+              </div>
 
-            <div class="flex items-center justify-center col-start-3 rotate-90">
-              <h1>Park-<br/>Straße</h1>
-            </div>
-            <div className='flex items-center justify-center col-start-4 rotate-90 col-span-2'>
+            <div className='flex items-center justify-center row-start-1 row-span-1'>
               {props.positionP1===37 && <h1 className=' bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===37 && <h1 className=' bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
               {props.positionP3===37 && <h1 className=' bg-gradient-to-tl from-yellow-600 to-yellow-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
@@ -254,10 +264,10 @@ const Feld = (props) => {
               {props.positionP6===37 && <h1 className=' bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             
-
+            </div>
           </div>
 
-          <div className='bg-pink-300 bg-opacity-60 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
+          <div className='bg-gradient-to-r from-pink-400/40 to-pink-500/40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
             <div className='flex items-center justify-center col-start-1 rotate-90 col-span-2'>
               {props.positionP1===13 && <h1 className=' bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===13 && <h1 className=' bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -287,7 +297,7 @@ const Feld = (props) => {
 
           </div>
 
-          <div className='bg-pink-300 bg-opacity-60 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
+          <div className='bg-gradient-to-r from-pink-400/40 to-pink-500/40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
             <div className='flex items-center justify-center col-start-1 rotate-90 col-span-2'>
               {props.positionP1===14 && <h1 className=' bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===14 && <h1 className=' bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -338,7 +348,7 @@ const Feld = (props) => {
         </div>
 
         <div className='flex justify-between mx-6 text-white text-sm font-medium'>
-          <div className='bg-green-600 bg-opacity-40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
+          <div className='bg-gradient-to-l from-green-400/40 to-green-500/40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
 
             <div class="flex items-center justify-center col-start-3 rotate-90">
               <h1>Bahnhof-<br/>Straße</h1>
@@ -355,7 +365,7 @@ const Feld = (props) => {
 
           </div>
 
-          <div className='bg-orange-400 bg-opacity-60 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
+          <div className='bg-gradient-to-r from-orange-400/60 to-orange-500/60 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
             <div className='flex items-center justify-center col-start-1 rotate-90 col-span-2'>
               {props.positionP1===16 && <h1 className=' bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===16 && <h1 className=' bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -399,7 +409,7 @@ const Feld = (props) => {
         </div>
 
         <div className='flex justify-between mx-6 text-white text-sm font-medium'>
-          <div className='bg-green-600 bg-opacity-40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
+          <div className='bg-gradient-to-l from-green-400/40 to-green-500/40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
 
             <div class="flex items-center justify-center col-start-3 rotate-90">
               <h1>Haupt-<br/>Straße</h1>
@@ -416,7 +426,7 @@ const Feld = (props) => {
 
           </div>
 
-          <div className='bg-orange-400 bg-opacity-60 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
+          <div className='bg-gradient-to-r from-orange-400/60 to-orange-500/60 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
             <div className='flex items-center justify-center col-start-1 rotate-90 col-span-2'>
               {props.positionP1===18 && <h1 className=' bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===18 && <h1 className=' bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -433,7 +443,7 @@ const Feld = (props) => {
         </div>
 
         <div className='flex justify-between mx-6 text-white text-sm font-medium'>
-          <div className='bg-green-600 bg-opacity-40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
+          <div className='bg-gradient-to-l from-green-400/40 to-green-500/40 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
 
             <div class="flex items-center justify-center col-start-3 rotate-90">
               <h1>Rathaus-<br/>Platz</h1>
@@ -450,7 +460,7 @@ const Feld = (props) => {
 
           </div>
 
-          <div className='bg-orange-400 bg-opacity-60 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
+          <div className='bg-gradient-to-r from-orange-400/60 to-orange-500/60 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-5'>
             <div className='flex items-center justify-center col-start-1 rotate-90 col-span-2'>
               {props.positionP1===19 && <h1 className=' bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===19 && <h1 className=' bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -483,7 +493,7 @@ const Feld = (props) => {
 
           </div>
 
-          <div className='bg-yellow-300 bg-opacity-60 h-24 w-16 mt-2 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
+          <div className='bg-gradient-to-b from-yellow-300/60 to-yellow-400/60 h-24 w-16 mt-2 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
             <div className='flex items-center justify-center row-span-2'>
               {props.positionP1===29 && <h1 className='bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===29 && <h1 className='bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -494,6 +504,7 @@ const Feld = (props) => {
             </div>
             <div>
               <h1>Goethe-<br/>Straße</h1>
+              <h1>280$</h1>
             </div>
 
           </div>
@@ -509,11 +520,12 @@ const Feld = (props) => {
             </div>
             <div>
               <h1>Water-<br/>Company</h1>
+              <h1>150$</h1>
             </div>
 
           </div>
 
-          <div className='bg-yellow-300 bg-opacity-60 h-24 w-16 mt-2 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
+          <div className='bg-gradient-to-b from-yellow-300/60 to-yellow-400/60 h-24 w-16 mt-2 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
             <div className='flex items-center justify-center row-span-2'>
               {props.positionP1===27 && <h1 className='bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===27 && <h1 className='bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -524,11 +536,12 @@ const Feld = (props) => {
             </div>
             <div>
               <h1>Schiller-<br/>Straße</h1>
+              <h1>260$</h1>
             </div>
 
           </div>
 
-          <div className='bg-yellow-300 bg-opacity-60 h-24 w-16 mt-2 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
+          <div className='bg-gradient-to-b from-yellow-300/60 to-yellow-400/60 h-24 w-16 mt-2 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
             <div className='flex items-center justify-center row-span-2'>
               {props.positionP1===26 && <h1 className='bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===26 && <h1 className='bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -539,6 +552,7 @@ const Feld = (props) => {
             </div>
             <div>
               <h1>Lessing-<br/>Straße</h1>
+              <h1>260$</h1>
             </div>
 
           </div>
@@ -554,11 +568,12 @@ const Feld = (props) => {
             </div>
             <div>
               <h1>Nord-<br/>Bahnhof</h1>
+              <h1>200$</h1>
             </div>
 
           </div>
 
-          <div className='bg-red-500 bg-opacity-60 h-24 w-16 mt-2 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
+          <div className='bg-gradient-to-b from-red-500/60 to-red-600/60 h-24 w-16 mt-2 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
             <div className='flex items-center justify-center row-span-2'>
               {props.positionP1===24 && <h1 className='bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===24 && <h1 className='bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -569,11 +584,12 @@ const Feld = (props) => {
             </div>
             <div>
               <h1>Opern-<br/>Platz</h1>
+              <h1>240$</h1>
             </div>
 
           </div>
 
-          <div className='bg-red-500 bg-opacity-60 h-24 w-16 mt-2 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
+          <div className='bg-gradient-to-b from-red-500/60 to-red-600/60 h-24 w-16 mt-2 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
             <div className='flex items-center justify-center row-span-2'>
               {props.positionP1===23 && <h1 className='bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===23 && <h1 className='bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -584,6 +600,7 @@ const Feld = (props) => {
             </div>
             <div>
               <h1>Museum-<br/>Straße</h1>
+              <h1>220$</h1>
             </div>
 
           </div>
@@ -600,7 +617,7 @@ const Feld = (props) => {
 
           </div>
 
-          <div className='bg-red-500 bg-opacity-60 h-24 w-16 mt-2 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
+          <div className='bg-gradient-to-b from-red-500/60 to-red-600/60 h-24 w-16 mt-2 ml-2 rounded-lg ring-2 ring-black grid grid-rows-6'>
             <div className='flex items-center justify-center row-span-2'>
               {props.positionP1===21 && <h1 className='bg-gradient-to-tl from-blue-600 to-blue-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player1} alt="player 1"></img></h1>}
               {props.positionP2===21 && <h1 className='bg-gradient-to-tl from-red-600 to-red-200  text-transparent bg-clip-text text-2xl font-bold'><img src={Player2} alt="player 2"></img></h1>}
@@ -611,6 +628,7 @@ const Feld = (props) => {
             </div>
             <div>
               <h1>Theater-<br/>Straße</h1>
+              <h1>220$</h1>
             </div>
 
           </div>
