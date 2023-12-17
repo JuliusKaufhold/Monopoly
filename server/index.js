@@ -53,6 +53,29 @@ const io = new Server(server, {
     },
 })
 
+function updateOthersOwned(){
+    playerList.map(player => {
+        let counter=-1
+        let company=-1
+        player.ownedProps.map(prop => {
+            if(prop===5||prop===15||prop===25||prop===35){
+                counter++;
+            }
+            if(prop===12 || prop===28){
+                company++;
+            }
+        })
+        globalProperties.map(prop => {
+            if(prop.owner===player.id &&(prop.id===5||prop.id===15||prop.id===25||prop.id===35)){
+                prop.othersOwned=counter
+            }
+            if(prop.owner===player.id &&(prop.id===12||prop.id===28)){
+                prop.othersOwned=company
+            }
+        })
+    })
+}
+
 io.on("connection", (socket) =>{
     
     socket.on("login", (data) =>{
@@ -99,8 +122,8 @@ io.on("connection", (socket) =>{
     })
 
     socket.on("rolling",() => {
-        /* (Math.random()*6)+ */
-        dice1=Math.floor(1);
+        /* (Math.random()*6)+1 */
+        dice1=Math.floor(17);
         dice2=Math.floor(0);
         currentRoll=dice1+dice2;
         if(dice1===dice2){
@@ -126,6 +149,20 @@ io.on("connection", (socket) =>{
                         }
                         if(property.owner!=player.id && property.owner!=-1){
                             let rent;
+                            updateOthersOwned()
+                            if(property.id===12 || property.id===28){
+                                switch(property.othersOwned){
+                                    case 0: 
+                                        player.money-=currentRoll*4
+                                        rent=currentRoll*4
+                                        break;
+                                    case 1:
+                                        player.money-= currentRoll*10
+                                        rent=currentRoll*10
+                                        break;
+                                    default: break;
+                                }
+                            }
 
                             if(property.id===5 || property.id===15 || property.id===25 || property.id===35){
                                 switch(property.othersOwned){
@@ -134,17 +171,17 @@ io.on("connection", (socket) =>{
                                         rent=property.defaultRent
                                         break;
 
-                                    case 0:
+                                    case 1:
                                         player.money-=property.oneOtherRent
                                         rent=property.oneOtherRent
                                         break;
 
-                                    case 0:
+                                    case 2:
                                         player.money-=property.twoOtherRent
                                         rent=property.twoOtherRent
                                         break;
 
-                                    case 0:
+                                    case 3:
                                         player.money-=property.threeOtherRent
                                         rent=property.threeOtherRent
                                         break;
@@ -281,7 +318,6 @@ server.listen(3001, () => {
 });
 
 /* TODO:
-company rent
 even build
 event felder
 bankrupt button

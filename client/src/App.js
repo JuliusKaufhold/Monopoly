@@ -160,7 +160,7 @@ function App() {
 
         {canBuyProperty && <button className='bg-gradient-to-tr from-slate-800 to-slate-900 absolute top-8 right-4 h-12 w-32 rounded-2xl ring-2 ring-black transition duration-300 ease-in-out hover:scale-105 text-white font-mono text-lg font-bold'
           onClick={() => {BuyProperty();}}>
-            Buy
+            <h1>Buy</h1>
         </button>}
         </div>
       </div>

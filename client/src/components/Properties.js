@@ -38,22 +38,22 @@ const Properties = (props) => {
 
 
   return (
-    <div className='bg-gradient-to-br from-slate-700 to-slate-800 h-96 w-1/4 rounded-xl absolute bottom-10 font-roboto font-bold text-lg ring-2 ring-slate-500'>
+    <div className='bg-gradient-to-br from-slate-700 to-slate-800 h-96 w-1/4 rounded-xl absolute bottom-10 font-roboto font-bold ring-2 ring-slate-500'>
         <h1 className='pt-3 text-slate-100 text-xl'>Properties</h1>
-          <ul className='px-3 py-1 space-y-3 font-semibold font-mono text-green-200'>
+          <ul className='px-3 py-1 space-y-3 font-semibold font-mono text-white'>
            {yourProperties.map(object => (
-                <li key={object.id}>
+                <li key={object.id} class='flex justify-between'>
                   <div className='flex justify-start'>
-                    <p className=''>{object.name}</p>
+                    <p className='text-lg'>{object.name}</p>
                   </div>
                   <div className='flex justify-end'>
-                    {canBuyHouse(object.streetID,object.owner) && <button classname='bg-gradient-to-tr from-slate-800 to-slate-900 absolute top-8 right-4 h-12 w-32 rounded-2xl ring-2 ring-black transition duration-300 ease-in-out hover:scale-105 text-white font-mono text-lg font-bold'
+                    {canBuyHouse(object.streetID,object.owner) && <button class='bg-gradient-to-tr from-slate-800 to-slate-900  h-6 w-14 mr-5 rounded-md ring-2 ring-black transition duration-300 ease-in-out hover:scale-105'
                     onClick={() => props.childBuyHouse(object.id,object.owner,object.housePrice,object.housesOnProperty)}>
-                      Buy
+                      <h1 class="text-white font-mono text-md font-bold">Buy</h1>
                     </button>}
-                    {canBuyHouse(object.streetID,object.owner) && <button classname='bg-gradient-to-tr from-slate-800 to-slate-900 absolute top-8 right-4 h-12 w-32 rounded-2xl ring-2 ring-black transition duration-300 ease-in-out hover:scale-105 text-white font-mono text-lg font-bold'
+                    {canBuyHouse(object.streetID,object.owner) && <button class='bg-gradient-to-tr from-slate-800 to-slate-900  h-6 w-14 rounded-md ring-2 ring-black transition duration-300 ease-in-out hover:scale-105'
                     onClick={() => props.childSellHouse(object.id,object.owner,object.housePrice,object.housesOnProperty)}>
-                      Sell
+                      <h1 class="text-white font-mono text-md font-bold">Sell</h1>
                     </button>}
                   </div>
                 </li>
