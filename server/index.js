@@ -123,7 +123,7 @@ io.on("connection", (socket) =>{
 
     socket.on("rolling",() => {
         /* (Math.random()*6)+1 */
-        dice1=Math.floor(37);
+        dice1=Math.floor(39);
         dice2=Math.floor(0);
         currentRoll=dice1+dice2;
         if(dice1===dice2){
