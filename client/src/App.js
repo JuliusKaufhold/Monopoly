@@ -62,11 +62,20 @@ function App() {
   }
 
   function BuyHouse (propertyID,ObjectOwner,priceHouse,HousesAlreadyBuilt){
+    console.log("X")
     socket.emit("BuyHouse",propertyID,ObjectOwner,priceHouse,HousesAlreadyBuilt)
   }
 
   function SellHouse (propertyID,ObjectOwner,priceHouse,HousesAlreadyBuilt){
     socket.emit("SellHouse",propertyID,ObjectOwner,priceHouse,HousesAlreadyBuilt)
+  }
+
+  function MortageProperty(ID,Houses,Owner){
+    socket.emit("MortageProperty",ID,Houses,Owner)
+  }
+
+  function BuyBackProperty(ID,Owner){
+    socket.emit("BuyBackProperty",ID,Owner)
   }
 
   function updatePOS(){
@@ -198,7 +207,7 @@ function App() {
       <div class="flex justify-end pr-12 bg-slate-900 h-screen"> 
         <Players playerArray={players}/>
         <Trades/>
-        <Properties canBuy={canBuyProperty} propertylist={propertyList} socketid={socket.id} playerlist={players} childBuyHouse={BuyHouse} childSellHouse={SellHouse}/>
+        <Properties canBuy={canBuyProperty} propertylist={propertyList} socketid={socket.id} playerlist={players} childBuyHouse={BuyHouse} childSellHouse={SellHouse} childMortage={MortageProperty} childBuyBack={BuyBackProperty}/>
       </div>
 
     </div>

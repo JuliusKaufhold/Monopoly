@@ -32,6 +32,15 @@ const Properties = (props) => {
     return x===0;
   }
 
+  function propertyIsMortaged(objectID) {
+    yourProperties.map(property => {
+      if(property.id===objectID){
+        console.log("FUNCTION BUTTON",property.isMortaged)
+        return property.isMortaged
+      }
+    })
+  }
+
   useEffect(() => {
     updateProps()
   },[props.propertylist])
@@ -47,10 +56,21 @@ const Properties = (props) => {
                     <p className='text-lg'>{object.name}</p>
                   </div>
                   <div className='flex justify-end'>
+                    {!propertyIsMortaged(object.id)&& <button class="bg-gradient-to-tr from-yellow-300 to-yellow-400 h-6 w-20 mr-5 rounded-md ring-2 ring-black transition duration-300 ease-in-out hover:scale-105"
+                    onClick={() => {props.childMortage(object.id,object.housesOnProperty,object.owner)}}>
+                      <h1 class="text-black text-md font-mono font-bold">Mortage</h1>
+                    </button>}
+
+                    {propertyIsMortaged(object.id) &&  <button class="bg-gradient-to-tr from-yellow-300 to-yellow-400 h-6 w20 mr-5 rounded-md ring-2 ring-black transition duration-300 ease-in-out hover:scale-105"
+                    onClick={() => {props.childBuyBack(object.id,object.owner)}}>
+                      <h1 class="text-black text-md font-mono font-bold">Buy back</h1>
+                    </button>}
+
                     {canBuyHouse(object.streetID,object.owner) && <button class='bg-gradient-to-tr from-slate-800 to-slate-900  h-6 w-14 mr-5 rounded-md ring-2 ring-black transition duration-300 ease-in-out hover:scale-105'
                     onClick={() => props.childBuyHouse(object.id,object.owner,object.housePrice,object.housesOnProperty)}>
                       <h1 class="text-white font-mono text-md font-bold">Buy</h1>
                     </button>}
+
                     {canBuyHouse(object.streetID,object.owner) && <button class='bg-gradient-to-tr from-slate-800 to-slate-900  h-6 w-14 rounded-md ring-2 ring-black transition duration-300 ease-in-out hover:scale-105'
                     onClick={() => props.childSellHouse(object.id,object.owner,object.housePrice,object.housesOnProperty)}>
                       <h1 class="text-white font-mono text-md font-bold">Sell</h1>
