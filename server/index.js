@@ -147,7 +147,7 @@ io.on("connection", (socket) =>{
                         if(player.money>=property.cost && property.owner===-1){
                             canBuy=true
                         }
-                        if(property.owner!=player.id && property.owner!=-1){
+                        if(property.owner!=player.id && property.owner!=-1 &&!property.isMortaged){
                             let rent;
                             updateOthersOwned()
                             if(property.id===12 || property.id===28){
@@ -355,7 +355,6 @@ server.listen(3001, () => {
 even build
 event felder
 bankrupt button
-mortages
 delete properties
 auctions
 trades
