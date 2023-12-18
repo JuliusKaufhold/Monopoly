@@ -312,14 +312,12 @@ io.on("connection", (socket) =>{
     })
 
     socket.on("MortageProperty",(propertyID,propertyHouses,propertyOwner) => {
-        console.log("OOO")
         if(propertyHouses!==0){
             return;
         }
         globalProperties.map(property => {
             if(property.id===propertyID){
                 property.isMortaged=true
-                console.log(property.id,property.isMortaged)
                 playerList.map(player => {
                     if(player.id===propertyOwner){
                         player.money+=property.cost/2
@@ -339,7 +337,6 @@ io.on("connection", (socket) =>{
                             return;
                         }
                         property.isMortaged=false
-                        console.log(property.id, property.isMortaged)
                         player.money-=property.cost/2+5
                     }
                 })

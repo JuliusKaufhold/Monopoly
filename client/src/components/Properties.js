@@ -33,12 +33,15 @@ const Properties = (props) => {
   }
 
   function propertyIsMortaged(objectID) {
-    yourProperties.map(property => {
+    let x=0
+    props.propertylist.map(property => {
       if(property.id===objectID){
-        console.log("FUNCTION BUTTON",property.isMortaged)
-        return property.isMortaged
+        if(property.isMortaged===true){
+          x++
+        }
       }
     })
+    return x===0
   }
 
   useEffect(() => {
@@ -56,12 +59,12 @@ const Properties = (props) => {
                     <p className='text-lg'>{object.name}</p>
                   </div>
                   <div className='flex justify-end'>
-                    {!propertyIsMortaged(object.id)&& <button class="bg-gradient-to-tr from-yellow-300 to-yellow-400 h-6 w-20 mr-5 rounded-md ring-2 ring-black transition duration-300 ease-in-out hover:scale-105"
+                    {propertyIsMortaged(object.id)&& <button class="bg-gradient-to-tr from-yellow-300 to-yellow-400 h-6 w-20 mr-5 rounded-md ring-2 ring-black transition duration-300 ease-in-out hover:scale-105"
                     onClick={() => {props.childMortage(object.id,object.housesOnProperty,object.owner)}}>
                       <h1 class="text-black text-md font-mono font-bold">Mortage</h1>
                     </button>}
 
-                    {propertyIsMortaged(object.id) &&  <button class="bg-gradient-to-tr from-yellow-300 to-yellow-400 h-6 w20 mr-5 rounded-md ring-2 ring-black transition duration-300 ease-in-out hover:scale-105"
+                    {!propertyIsMortaged(object.id) &&  <button class="bg-gradient-to-tr from-yellow-300 to-yellow-400 h-6 w20 mr-5 rounded-md ring-2 ring-black transition duration-300 ease-in-out hover:scale-105"
                     onClick={() => {props.childBuyBack(object.id,object.owner)}}>
                       <h1 class="text-black text-md font-mono font-bold">Buy back</h1>
                     </button>}
