@@ -18,15 +18,14 @@ const ChatLog = (props) => {
         </div>
       </div>
 
-      <input placeholder='message...' className='bg-slate-600 text-white h-10 w-64 ring-1 ring-black rounded-lg absolute bottom-5 left-5'
+      <input id="inputFeld" placeholder='message...' className='bg-slate-600 text-white h-10 w-64 ring-1 ring-black rounded-lg absolute bottom-5 left-5'
       onChange={(e) => {setChatMessage(e.target.value)}}>
       </input>
       <button className='bg-slate-900 ring-1 ring-black rounded-xl absolute bottom-5 right-4 h-10 w-12'
-      onClick={() => {props.sendChatMessage(chatMessage)}}>
+      onClick={() => {props.sendChatMessage(chatMessage); document.getElementById("inputFeld").value = "";}}>
         <h1 className='text-white font-semibold'>Send</h1>
       </button>
     </div>
   )
 }
-
 export default ChatLog
