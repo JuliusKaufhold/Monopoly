@@ -118,7 +118,6 @@ function App() {
   useEffect(() => {
     socket.on("updateChat", (data) => {
       setChat(data)
-      console.log(chat)
     })
   }, )
 

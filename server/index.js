@@ -363,6 +363,7 @@ io.on("connection", (socket) =>{
             chat.push({msg:message,playername:name})
             io.emit("updateChat",chat)
         }
+        console.log(chat)
     })
 
 })

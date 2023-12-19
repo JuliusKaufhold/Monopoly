@@ -8,7 +8,7 @@ const ChatLog = (props) => {
         <div className='bg-slate-700 h-64 w-full mx-5 rounded-xl flex justify-start'>
           <ul>
             {props.chat.map(message => (
-              <li key={message.msg}>
+              <li>
                 <div className='flex justify-start'>
                   <h1 className='text-white font-semibold font-mono'>{message.playername}:{message.msg}</h1>
                 </div>
