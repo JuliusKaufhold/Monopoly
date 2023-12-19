@@ -24,6 +24,7 @@ function App() {
   const [posPlayer6,setPosPlayer6] = useState()
   const [canBuyProperty,setCanBuyProperty] = useState(false)
   const [propertyList, setPropertyList] = useState([])
+  const [chat,setChat] = useState([])
 
   //player-list
   const [players, setPlayers] = useState([]);
@@ -78,6 +79,10 @@ function App() {
     socket.emit("BuyBackProperty",ID,Owner)
   }
 
+  function sendChatMessage(chatMessage){
+    socket.emit("sendChatMessage", chatMessage)
+  }
+
   function updatePOS(){
     for(let i=0;i<players.length;i++){
       if(i===0){
@@ -107,6 +112,13 @@ function App() {
       setPlayers(playerServer)
       setPropertyList(propertyServer)
       syncPlayerList()
+    })
+  }, )
+
+  useEffect(() => {
+    socket.on("updateChat", (data) => {
+      setChat(data)
+      console.log(chat)
     })
   }, )
 
@@ -160,7 +172,7 @@ function App() {
       
       {/*Chat and Chatlog*/}
       <div className=' bg-slate-900 absolute top-6 left-12 '>
-        <ChatLog/>
+        <ChatLog sendChatMessage={sendChatMessage} chat={chat}/>
         <div className='flex justify-center'>
           {!gameStarted && <button className='absolute top-96 ring-1 ring-black bg-gradient-to-tr from-slate-800 to-slate-900 rounded-xl text-white font-mono h-10 w-40 font-bold text-lg transition duration-300 ease-in-out hover:scale-105'
             onClick={() => {start();}}>

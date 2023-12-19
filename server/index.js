@@ -5,6 +5,7 @@ const { Server } = require("socket.io");
 const cors = require("cors");
 
 const playerList = []
+const chat = []
 const globalProperties=[
     {id:1,name:"Badstraße",cost:60,housePrice:50,defaultRent:2,oneHouseRent:10,twoHouseRent:30,threeHouseRent:90,fourHouseRent:160,hotelRent:250,housesOnProperty:0,owner:-1,streetID:1,isMortaged:false},
     {id:3,name:"Turmstraße",cost:60,housePrice:50,defaultRent:4,oneHouseRent:20,twoHouseRent:60,threeHouseRent:180,fourHouseRent:320,hotelRent:450,housesOnProperty:0,owner:-1,streetID:1,isMortaged:false},
@@ -343,6 +344,25 @@ io.on("connection", (socket) =>{
             }
         })
         io.emit("updatePlayers",playerList,globalProperties)
+    })
+
+    socket.on("sendChatMessage",(message) => {
+        let name
+        playerList.map(player => {
+            if(player.id===socket.id){
+                name=player.name
+            }
+        })
+
+        if(chat.length<=8){
+            chat.push({msg:message,playername:name})
+            io.emit("updateChat",chat)
+        }
+        else{
+            chat.shift()
+            chat.push({msg:message,playername:name})
+            io.emit("updateChat",chat)
+        }
     })
 
 })

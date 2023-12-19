@@ -34,7 +34,7 @@ const Feld = (props) => {
               {props.positionP6===1 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Bad-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Bad-<br/>Straße</h1>
               <h1>60$</h1>
             </div>
             
@@ -62,7 +62,7 @@ const Feld = (props) => {
               {props.positionP6===3 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Turm-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Turm-<br/>Straße</h1>
               <h1>60$</h1>
             </div>
            
@@ -78,7 +78,7 @@ const Feld = (props) => {
               {props.positionP6===4 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Income<br/>Tax<br/>(10%)</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Income<br/>Tax<br/>(10%)</h1>
             </div>
            
           </div>
@@ -93,7 +93,7 @@ const Feld = (props) => {
               {props.positionP6===5 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Süd-<br/>Bahnhof</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Süd-<br/>Bahnhof</h1>
               <h1>200$</h1>
             </div>
             
@@ -109,7 +109,7 @@ const Feld = (props) => {
               {props.positionP6===6 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Chaussee<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Chaussee<br/>Straße</h1>
               <h1>100$</h1>
             </div>
            
@@ -137,7 +137,7 @@ const Feld = (props) => {
               {props.positionP6===8 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Elisen-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Elisen-<br/>Straße</h1>
               <h1>100$</h1>
             </div>
            
@@ -153,7 +153,7 @@ const Feld = (props) => {
               {props.positionP6===9 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Post-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Post-<br/>Straße</h1>
               <h1>120$</h1>
             </div>
           
@@ -184,7 +184,7 @@ const Feld = (props) => {
               </div>
               
               <div class="flex items-center justify-center col-start-3 rotate-90">
-                <h1>Schloss-<br/>allee</h1>
+                <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Schloss-<br/>allee</h1>
               </div>
 
             <div className='flex items-center justify-center rotate-90 col-start-4 col-span-2'>
@@ -209,7 +209,7 @@ const Feld = (props) => {
             </div>
 
             <div class="flex items-center justify-center col-start-3 -rotate-90">
-              <h1>See-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>See-<br/>Straße</h1>
             </div>
 
             <div class="flex items-center justify-center col-start-5 -rotate-90">
@@ -223,7 +223,7 @@ const Feld = (props) => {
           <div className='bg-gray-900 h-16 w-24 mt-2 rounded-lg ring-2 ring-black grid grid-cols-8'>
 
             <div class="flex items-center justify-center col-start-3">
-              <h1 className='rotate-90'>Luxury-<br/>Tax<br/>(75$)</h1>
+              <h1 className='rotate-90 drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Luxury-<br/>Tax<br/>(75$)</h1>
             </div>
 
             <div className='flex items-center justify-center col-start-6 rotate-90 col-span-4'>
@@ -248,7 +248,7 @@ const Feld = (props) => {
             </div>
 
             <div class="flex items-center justify-center col-start-3 -rotate-90">
-              <h1>Electric<br/>Company</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Electric<br/>Company</h1>
             </div>
 
             <div class="flex items-center justify-center col-start-5 -rotate-90">
@@ -266,7 +266,7 @@ const Feld = (props) => {
             </div>
             
             <div class="flex items-center justify-center col-start-3 rotate-90">
-              <h1>Park-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Park-<br/>Straße</h1>
             </div>
 
             <div className='flex items-center justify-center rotate-90 col-start-4 col-span-2'>
@@ -290,7 +290,7 @@ const Feld = (props) => {
               {props.positionP6===13 && <h1 className=' bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div class="flex items-center justify-center col-start-3 -rotate-90">
-              <h1>Hafen-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Hafen-<br/>Straße</h1>
             </div>
 
             <div class="flex items-center justify-center col-start-5 -rotate-90">
@@ -324,7 +324,7 @@ const Feld = (props) => {
               {props.positionP6===14 && <h1 className=' bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div class="flex items-center justify-center col-start-3 -rotate-90">
-              <h1>Neue-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Neue-<br/>Straße</h1>
             </div>
 
             <div class="flex items-center justify-center col-start-5 -rotate-90">
@@ -342,7 +342,7 @@ const Feld = (props) => {
             </div>
 
             <div class="flex items-center justify-center col-start-3 rotate-90">
-              <h1>Haupt-<br/>Bahnhof</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Haupt-<br/>Bahnhof</h1>
             </div>
 
             <div className='flex items-center justify-center col-start-4 rotate-90 col-span-2'>
@@ -366,7 +366,7 @@ const Feld = (props) => {
               {props.positionP6===15 && <h1 className=' bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div class="flex items-center justify-center col-start-3 -rotate-90">
-              <h1>West-<br/>Bahnhof</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>West-<br/>Bahnhof</h1>
             </div>
 
             <div class="flex items-center justify-center col-start-5 -rotate-90">
@@ -384,7 +384,7 @@ const Feld = (props) => {
             </div>
 
             <div class="flex items-center justify-center col-start-3 rotate-90">
-              <h1>Bahnhof-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Bahnhof-<br/>Straße</h1>
             </div>
 
             <div className='flex items-center justify-center col-start-4 rotate-90 col-span-2'>
@@ -408,7 +408,7 @@ const Feld = (props) => {
               {props.positionP6===16 && <h1 className=' bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div class="flex items-center justify-center col-start-3 -rotate-90">
-              <h1>Münchner<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Münchner<br/>Straße</h1>
             </div>
 
             <div class="flex items-center justify-center col-start-5 -rotate-90">
@@ -453,7 +453,7 @@ const Feld = (props) => {
             </div>
 
             <div class="flex items-center justify-center col-start-3 rotate-90">
-              <h1>Haupt-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Haupt-<br/>Straße</h1>
             </div>
 
             <div className='flex items-center justify-center col-start-4 rotate-90 col-span-2'>
@@ -477,7 +477,7 @@ const Feld = (props) => {
               {props.positionP6===18 && <h1 className=' bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div class="flex items-center justify-center col-start-3 -rotate-90">
-              <h1>Wiener-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Wiener-<br/>Straße</h1>
             </div>
 
             <div class="flex items-center justify-center col-start-5 -rotate-90">
@@ -495,7 +495,7 @@ const Feld = (props) => {
             </div>
 
             <div class="flex items-center justify-center col-start-3 rotate-90">
-              <h1>Rathaus-<br/>Platz</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Rathaus-<br/>Platz</h1>
             </div>
 
             <div className='flex items-center justify-center col-start-4 rotate-90 col-span-2'>
@@ -519,7 +519,7 @@ const Feld = (props) => {
               {props.positionP6===19 && <h1 className=' bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div class="flex items-center justify-center col-start-3 -rotate-90">
-              <h1>Berliner-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Berliner-<br/>Straße</h1>
             </div>
 
             <div class="flex items-center justify-center col-start-5 -rotate-90">
@@ -556,7 +556,7 @@ const Feld = (props) => {
               {props.positionP6===29 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Goethe-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Goethe-<br/>Straße</h1>
               <h1>280$</h1>
             </div>
 
@@ -572,7 +572,7 @@ const Feld = (props) => {
               {props.positionP6===28 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Water-<br/>Company</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Water-<br/>Company</h1>
               <h1>150$</h1>
             </div>
 
@@ -588,7 +588,7 @@ const Feld = (props) => {
               {props.positionP6===27 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Schiller-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Schiller-<br/>Straße</h1>
               <h1>260$</h1>
             </div>
 
@@ -604,7 +604,7 @@ const Feld = (props) => {
               {props.positionP6===26 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Lessing-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Lessing-<br/>Straße</h1>
               <h1>260$</h1>
             </div>
 
@@ -620,7 +620,7 @@ const Feld = (props) => {
               {props.positionP6===25 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Nord-<br/>Bahnhof</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Nord-<br/>Bahnhof</h1>
               <h1>200$</h1>
             </div>
 
@@ -636,7 +636,7 @@ const Feld = (props) => {
               {props.positionP6===24 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Opern-<br/>Platz</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Opern-<br/>Platz</h1>
               <h1>240$</h1>
             </div>
 
@@ -652,7 +652,7 @@ const Feld = (props) => {
               {props.positionP6===23 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Museum-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Museum-<br/>Straße</h1>
               <h1>220$</h1>
             </div>
 
@@ -680,7 +680,7 @@ const Feld = (props) => {
               {props.positionP6===21 && <h1 className='bg-gradient-to-tl from-fuchsia-600 to-fuchsia-200  text-transparent bg-clip-text text-2xl font-bold'>O</h1>}
             </div>
             <div>
-              <h1>Theater-<br/>Straße</h1>
+              <h1 className='drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>Theater-<br/>Straße</h1>
               <h1>220$</h1>
             </div>
 
