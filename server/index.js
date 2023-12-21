@@ -312,10 +312,29 @@ io.on("connection", (socket) =>{
         io.emit("updatePlayers", playerList, globalProperties) 
     })
 
-    socket.on("MortageProperty",(propertyID,propertyHouses,propertyOwner) => {
-        if(propertyHouses!==0){
-            return;
+    socket.on("MortageProperty",(propertyID,propertyOwner,streetID) => {
+        let count=0
+        globalProperties.map(prop => {
+            if(prop.streetID===streetID){
+                if(prop.housesOnProperty!==0){
+                    count++
+                }
+            }
+        })
+        if(count!==0){return}
+
+        let street = globalProperties.filter((property) => {
+            return property.streetID===streetID;
+        })
+
+        const allEqual = street => street.every(prop => prop.owner===propertyOwner)
+
+        if(allEqual(street)===true){
+            globalProperties.map(property => {
+                if(property.streetID===streetID){property.defaultRent/=2}
+            })
         }
+
         globalProperties.map(property => {
             if(property.id===propertyID){
                 property.isMortaged=true
@@ -329,7 +348,20 @@ io.on("connection", (socket) =>{
         io.emit("updatePlayers", playerList, globalProperties)
     })
 
-    socket.on("BuyBackProperty",(propertyID,propertyOwner) => {
+    socket.on("BuyBackProperty",(propertyID,propertyOwner,streetID) => {
+
+        let street = globalProperties.filter((property) => {
+            return property.streetID===streetID;
+        })
+
+        const allEqual = street => street.every(prop => prop.owner===propertyOwner)
+
+        if(allEqual(street)===true){
+            globalProperties.map(property => {
+                if(property.streetID===streetID){property.defaultRent*=2}
+            })
+        }
+
         playerList.map(player => {
             if(player.id===propertyOwner){
                 globalProperties.map(property => {
@@ -380,5 +412,4 @@ auctions
 trades
 board design
 event log
-chat
 */

@@ -27,6 +27,9 @@ const Properties = (props) => {
       if(obj.streetID===-1){
         x++;
       }
+      if(obj.isMortaged===true){
+        x++;
+      }
     })
     
     return x===0;
@@ -57,15 +60,16 @@ const Properties = (props) => {
                 <li key={object.id} class='flex justify-between'>
                   <div className='flex justify-start'>
                     <p className='text-lg'>{object.name}</p>
+                    <p className='text-lg'>:{object.housesOnProperty}</p>
                   </div>
                   <div className='flex justify-end'>
                     {propertyIsMortaged(object.id)&& <button class="bg-gradient-to-tr from-yellow-300 to-yellow-400 h-6 w-20 mr-5 rounded-md ring-2 ring-black transition duration-300 ease-in-out hover:scale-105"
-                    onClick={() => {props.childMortage(object.id,object.housesOnProperty,object.owner)}}>
+                    onClick={() => {props.childMortage(object.id,object.owner,object.streetID)}}>
                       <h1 class="text-black text-md font-mono font-bold">Mortage</h1>
                     </button>}
 
                     {!propertyIsMortaged(object.id) &&  <button class="bg-gradient-to-tr from-yellow-300 to-yellow-400 h-6 w20 mr-5 rounded-md ring-2 ring-black transition duration-300 ease-in-out hover:scale-105"
-                    onClick={() => {props.childBuyBack(object.id,object.owner)}}>
+                    onClick={() => {props.childBuyBack(object.id,object.owner,object.streetID)}}>
                       <h1 class="text-black text-md font-mono font-bold">Buy back</h1>
                     </button>}
 

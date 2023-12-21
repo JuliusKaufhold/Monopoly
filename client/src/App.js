@@ -71,12 +71,12 @@ function App() {
     socket.emit("SellHouse",propertyID,ObjectOwner,priceHouse,HousesAlreadyBuilt)
   }
 
-  function MortageProperty(ID,Houses,Owner){
-    socket.emit("MortageProperty",ID,Houses,Owner)
+  function MortageProperty(ID,Owner,streetID){
+    socket.emit("MortageProperty",ID,Owner,streetID)
   }
 
-  function BuyBackProperty(ID,Owner){
-    socket.emit("BuyBackProperty",ID,Owner)
+  function BuyBackProperty(ID,Owner,streetID){
+    socket.emit("BuyBackProperty",ID,Owner,streetID)
   }
 
   function sendChatMessage(chatMessage){
